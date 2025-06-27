@@ -1,0 +1,3545 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زبانو - پلتفرم هوشمند آموزش زبان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        
+        /* Fonts */
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('Vazirmatn-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Variables */
+        :root {
+            /* Colors */
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --primary-extra-light: #e0e7ff;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray-dark: #334155;
+            --gray: #64748b;
+            --gray-light: #cbd5e1;
+            --light: #f8fafc;
+            --white: #ffffff;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            --gradient-accent: linear-gradient(135deg, var(--accent), #fbbf24);
+            --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            
+            /* Typography */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            --text-5xl: 3rem;
+            --text-6xl: 3.75rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-primary: 0 10px 15px -3px rgba(99, 102, 241, 0.3), 0 4px 6px -2px rgba(99, 102, 241, 0.2);
+            --shadow-accent: 0 10px 15px -3px rgba(245, 158, 11, 0.3), 0 4px 6px -2px rgba(245, 158, 11, 0.2);
+            
+            /* Border radius */
+            --radius-sm: 0.25rem;
+            --radius: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            
+            /* Header height */
+            --header-height: 80px;
+        }
+
+        /* Dark mode variables */
+        [data-theme="dark"] {
+            --bg-primary: var(--dark);
+            --bg-secondary: var(--dark-light);
+            --bg-tertiary: #1a2238;
+            --text-primary: var(--light);
+            --text-secondary: var(--gray-light);
+            --text-tertiary: var(--gray);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --card-bg: var(--dark-light);
+            --card-hover: rgba(255, 255, 255, 0.05);
+            --hero-overlay: radial-gradient(circle, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%);
+        }
+
+        /* Light mode variables */
+        [data-theme="light"] {
+            --bg-primary: var(--light);
+            --bg-secondary: var(--white);
+            --bg-tertiary: #f1f5f9;
+            --text-primary: var(--dark);
+            --text-secondary: var(--gray-dark);
+            --text-tertiary: var(--gray);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --card-bg: var(--white);
+            --card-hover: rgba(0, 0, 0, 0.05);
+            --hero-overlay: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Vazirmatn';
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition-slow);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section {
+            padding: var(--space-3xl) 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 60%;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: var(--text-lg);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-lg);
+            font-weight: 500;
+            transition: var(--transition);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+            font-size: var(--text-base);
+            gap: 10px;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: var(--gradient-primary-hover);
+        }
+
+        .btn-accent {
+            background: var(--gradient-accent);
+            color: var(--white);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-transparent {
+            border: 2px solid var(--white);
+            color: var(--white);
+            background: transparent;
+        }
+
+        .btn-transparent:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-icon {
+            margin-right: var(--space-xs);
+        }
+
+        /* Header styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+            padding: 0.75rem 2rem;
+        }
+
+        .nav-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding: var(--space-xs) var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-link.active::before {
+            width: 100%;
+        }
+
+        .theme-switcher {
+            width: 48px;
+            height: 24px;
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-full);
+            position: relative;
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .theme-switcher::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: var(--primary);
+            border-radius: var(--radius-full);
+            transition: var(--transition-bounce);
+        }
+
+        [data-theme="light"] .theme-switcher::before {
+            transform: translateX(-24px);
+            background-color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-primary);
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger span:nth-child(3) {
+            bottom: 0;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            bottom: 50%;
+            transform: translateY(50%) rotate(-45deg);
+        }
+
+        /* Hero section */
+z
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--hero-overlay);
+            z-index: 0;
+        }
+
+        .hero-content {
+
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: var(--space-3xl) 0;
+        }
+
+        .hero-title {
+            font-size: var(--text-5xl);
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: floatIn 1s ease-out forwards;
+        }
+
+        .hero-subtitle {
+            font-size: var(--text-xl);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1s 0.3s forwards;
+            opacity: 0;
+            margin-bottom: 4rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-bottom: var(--space-2xl);
+            animation: fadeIn 1s 0.6s forwards;
+            opacity: 0;
+        }
+
+        .search-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 4rem;
+        }
+
+        .search-container:hover {
+            box-shadow: 0 8px 32px rgba(129, 140, 248, 0.2);
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.8;
+        }
+
+        .search-input:focus {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .search-btn {
+            padding: 0 var(--space-xl);
+            background: var(--gradient-primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            transition: var(--transition);
+        }
+
+        .search-btn:hover {
+            background: var(--gradient-primary-hover);
+        }
+
+        .search-button {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(129, 140, 248, 0.3);
+        }
+
+        .search-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .search-text {
+            display: none;
+        }
+
+        /* Courses section */
+        .courses {
+            background-color: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .courses::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%236366f110" d="M44.1,-58.2C57.1,-51.8,67.3,-37.8,73.1,-21.7C78.9,-5.5,80.4,12.8,74.6,27.9C68.8,43.1,55.8,55.2,40.7,63.4C25.6,71.5,8.3,75.8,-8.3,75.6C-25,75.4,-49.9,70.8,-61.6,58.3C-73.3,45.8,-71.7,25.4,-68.2,7.7C-64.7,-10.1,-59.2,-25.2,-51.3,-37.3C-43.4,-49.4,-33.1,-58.5,-20.6,-65.1C-8.1,-71.7,6.6,-75.7,22.5,-73.6C38.3,-71.5,55.2,-63.3,66.1,-50.7C77.1,-38.1,82.1,-21.2,81.3,-5.1C80.5,11.1,73.8,26.3,64.4,38.4C55,50.5,42.8,59.4,29.9,67.9C17,76.3,3.4,84.2,-11.9,83.3C-27.2,82.4,-44.3,72.6,-55.5,59.3C-66.7,46,-71.9,29.1,-73.4,12.3C-74.9,-4.5,-72.6,-21.3,-65.1,-34.8C-57.6,-48.3,-44.8,-58.5,-30.9,-64.2C-17,-69.8,-2,-70.8,12.2,-68.8C26.5,-66.9,52.9,-61.8,66.5,-50.3C80.1,-38.8,80.8,-20.8,81.1,-0.6C81.5,19.6,81.5,39.1,73.2,53.3C64.9,67.4,48.3,76.1,32.7,78.9C17.1,81.7,2.5,78.5,-12.4,74.3C-27.2,70.1,-42.3,64.8,-52.3,54.4C-62.3,44,-67.2,28.5,-69.7,12.6C-72.2,-3.4,-72.3,-20,-65.8,-33.4C-59.3,-46.7,-46.2,-57,-32.6,-64.7C-19,-72.4,-4.8,-77.6,10.9,-75.5C26.6,-73.4,53.2,-64,62.3,-49.9C71.4,-35.8,63,-17,62.6,0.5C62.2,18,69.8,36,66.8,51.1C63.8,66.2,50.2,78.5,35.3,83.6C20.4,88.7,4.2,86.5,-12.6,81.5C-29.4,76.5,-46.9,68.7,-57.2,55.9C-67.5,43,-70.7,25.1,-71.7,7.2C-72.6,-10.7,-71.4,-28.5,-63.5,-42.2C-55.7,-55.8,-41.3,-65.2,-27.5,-71.6C-13.7,-78,-0.5,-81.3,14.7,-77.9C29.9,-74.4,59.7,-64.2,71.1,-48.9C82.5,-33.7,75.5,-13.4,73.5,5.5C71.5,24.4,74.5,48.8,67.7,65.5C60.9,82.1,44.3,91.1,28.4,89.8C12.5,88.6,-2.8,77.1,-18.8,69.2C-34.7,61.3,-51.2,57,-62.9,47.5C-74.6,38,-81.5,23.4,-82.3,8.3C-83.1,-6.8,-77.8,-22.3,-68.7,-34.1C-59.6,-45.9,-46.6,-54,-33.4,-60.7C-20.1,-67.4,-6.7,-72.7,7.6,-73.6C21.9,-74.5,43.8,-71,55.3,-60.6C66.8,-50.2,67.9,-32.9,71.2,-16.9C74.5,-0.9,80,13.7,78.9,27.9C77.8,42.1,70,55.8,58.2,64.3C46.4,72.8,30.6,76.1,15.9,75.6C1.2,75.1,-12.4,70.8,-23.4,64.2C-34.4,57.6,-43.7,48.7,-52.1,38.7C-60.5,28.8,-67.9,17.8,-71.2,5.2C-74.5,-7.3,-73.7,-21.4,-67.2,-32.8C-60.7,-44.1,-48.5,-52.7,-35.7,-59.7C-22.9,-66.7,-9.6,-72.1,4.3,-72.7C18.1,-73.4,36.3,-69.3,44.1,-58.2Z"/></svg>');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .courses-grid {
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .course-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            background: var(--card-hover);
+        }
+
+        .course-badge {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .course-badge.accent {
+            background: var(--gradient-accent);
+        }
+
+        .course-image-container {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .course-card:hover .course-image {
+            transform: scale(1.1);
+        }
+
+        .course-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .course-content {
+            padding: var(--space-lg);
+        }
+
+        .course-tags {
+            display: flex;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .course-tag {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius);
+            font-size: var(--text-xs);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .course-tag i {
+            color: var(--primary);
+        }
+
+        .course-title {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        .course-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            font-size: var(--text-sm);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-lg);
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .meta-item i {
+            color: var(--primary);
+        }
+
+        .progress-container {
+            height: 6px;
+            background-color: rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-sm);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            width: var(--progress);
+            transition: var(--transition-slow);
+        }
+
+        .progress-text {
+            text-align: left;
+            font-size: var(--text-xs);
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-price {
+            text-align: left;
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        .price-new {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: var(--text-lg);
+        }
+
+        .view-all {
+            margin-top: var(--space-2xl);
+            text-align: center;
+        }
+
+        /* Features section */
+        .features {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(15, 23, 42, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%236366f110" d="M44.1,-58.2C57.1,-51.8,67.3,-37.8,73.1,-21.7C78.9,-5.5,80.4,12.8,74.6,27.9C68.8,43.1,55.8,55.2,40.7,63.4C25.6,71.5,8.3,75.8,-8.3,75.6C-25,75.4,-49.9,70.8,-61.6,58.3C-73.3,45.8,-71.7,25.4,-68.2,7.7C-64.7,-10.1,-59.2,-25.2,-51.3,-37.3C-43.4,-49.4,-33.1,-58.5,-20.6,-65.1C-8.1,-71.7,6.6,-75.7,22.5,-73.6C38.3,-71.5,55.2,-63.3,66.1,-50.7C77.1,-38.1,82.1,-21.2,81.3,-5.1C80.5,11.1,73.8,26.3,64.4,38.4C55,50.5,42.8,59.4,29.9,67.9C17,76.3,3.4,84.2,-11.9,83.3C-27.2,82.4,-44.3,72.6,-55.5,59.3C-66.7,46,-71.9,29.1,-73.4,12.3C-74.9,-4.5,-72.6,-21.3,-65.1,-34.8C-57.6,-48.3,-44.8,-58.5,-30.9,-64.2C-17,-69.8,-2,-70.8,12.2,-68.8C26.5,-66.9,52.9,-61.8,66.5,-50.3C80.1,-38.8,80.8,-20.8,81.1,-0.6C81.5,19.6,81.5,39.1,73.2,53.3C64.9,67.4,48.3,76.1,32.7,78.9C17.1,81.7,2.5,78.5,-12.4,74.3C-27.2,70.1,-42.3,64.8,-52.3,54.4C-62.3,44,-67.2,28.5,-69.7,12.6C-72.2,-3.4,-72.3,-20,-65.8,-33.4C-59.3,-46.7,-46.2,-57,-32.6,-64.7C-19,-72.4,-4.8,-77.6,10.9,-75.5C26.6,-73.4,53.2,-64,62.3,-49.9C71.4,-35.8,63,-17,62.6,0.5C62.2,18,69.8,36,66.8,51.1C63.8,66.2,50.2,78.5,35.3,83.6C20.4,88.7,4.2,86.5,-12.6,81.5C-29.4,76.5,-46.9,68.7,-57.2,55.9C-67.5,43,-70.7,25.1,-71.7,7.2C-72.6,-10.7,-71.4,-28.5,-63.5,-42.2C-55.7,-55.8,-41.3,-65.2,-27.5,-71.6C-13.7,-78,-0.5,-81.3,14.7,-77.9C29.9,-74.4,59.7,-64.2,71.1,-48.9C82.5,-33.7,75.5,-13.4,73.5,5.5C71.5,24.4,74.5,48.8,67.7,65.5C60.9,82.1,44.3,91.1,28.4,89.8C12.5,88.6,-2.8,77.1,-18.8,69.2C-34.7,61.3,-51.2,57,-62.9,47.5C-74.6,38,-81.5,23.4,-82.3,8.3C-83.1,-6.8,-77.8,-22.3,-68.7,-34.1C-59.6,-45.9,-46.6,-54,-33.4,-60.7C-20.1,-67.4,-6.7,-72.7,7.6,-73.6C21.9,-74.5,43.8,-71,55.3,-60.6C66.8,-50.2,67.9,-32.9,71.2,-16.9C74.5,-0.9,80,13.7,78.9,27.9C77.8,42.1,70,55.8,58.2,64.3C46.4,72.8,30.6,76.1,15.9,75.6C1.2,75.1,-12.4,70.8,-23.4,64.2C-34.4,57.6,-43.7,48.7,-52.1,38.7C-60.5,28.8,-67.9,17.8,-71.2,5.2C-74.5,-7.3,-73.7,-21.4,-67.2,-32.8C-60.7,-44.1,-48.5,-52.7,-35.7,-59.7C-22.9,-66.7,-9.6,-72.1,4.3,-72.7C18.1,-73.4,36.3,-69.3,44.1,-58.2Z"/></svg>');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            background: var(--card-hover);
+        }
+
+        .feature-icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--space-lg);
+            position: relative;
+        }
+
+        .feature-icon-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-full);
+            transform: scale(0.9);
+            transition: var(--transition);
+        }
+
+        .feature-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: var(--text-2xl);
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon-bg {
+            background: var(--gradient-primary);
+            transform: scale(1.1);
+        }
+
+        .feature-card:hover .feature-icon {
+            color: var(--white);
+            transform: translate(-50%, -50%) rotate(15deg);
+        }
+
+        .feature-title {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        .feature-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.15) 100%);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .feature-card:hover .feature-hover {
+            opacity: 1;
+        }
+
+        /* Testimonials section */
+        .testimonials {
+            background-color: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%236366f110" d="M44.1,-58.2C57.1,-51.8,67.3,-37.8,73.1,-21.7C78.9,-5.5,80.4,12.8,74.6,27.9C68.8,43.1,55.8,55.2,40.7,63.4C25.6,71.5,8.3,75.8,-8.3,75.6C-25,75.4,-49.9,70.8,-61.6,58.3C-73.3,45.8,-71.7,25.4,-68.2,7.7C-64.7,-10.1,-59.2,-25.2,-51.3,-37.3C-43.4,-49.4,-33.1,-58.5,-20.6,-65.1C-8.1,-71.7,6.6,-75.7,22.5,-73.6C38.3,-71.5,55.2,-63.3,66.1,-50.7C77.1,-38.1,82.1,-21.2,81.3,-5.1C80.5,11.1,73.8,26.3,64.4,38.4C55,50.5,42.8,59.4,29.9,67.9C17,76.3,3.4,84.2,-11.9,83.3C-27.2,82.4,-44.3,72.6,-55.5,59.3C-66.7,46,-71.9,29.1,-73.4,12.3C-74.9,-4.5,-72.6,-21.3,-65.1,-34.8C-57.6,-48.3,-44.8,-58.5,-30.9,-64.2C-17,-69.8,-2,-70.8,12.2,-68.8C26.5,-66.9,52.9,-61.8,66.5,-50.3C80.1,-38.8,80.8,-20.8,81.1,-0.6C81.5,19.6,81.5,39.1,73.2,53.3C64.9,67.4,48.3,76.1,32.7,78.9C17.1,81.7,2.5,78.5,-12.4,74.3C-27.2,70.1,-42.3,64.8,-52.3,54.4C-62.3,44,-67.2,28.5,-69.7,12.6C-72.2,-3.4,-72.3,-20,-65.8,-33.4C-59.3,-46.7,-46.2,-57,-32.6,-64.7C-19,-72.4,-4.8,-77.6,10.9,-75.5C26.6,-73.4,53.2,-64,62.3,-49.9C71.4,-35.8,63,-17,62.6,0.5C62.2,18,69.8,36,66.8,51.1C63.8,66.2,50.2,78.5,35.3,83.6C20.4,88.7,4.2,86.5,-12.6,81.5C-29.4,76.5,-46.9,68.7,-57.2,55.9C-67.5,43,-70.7,25.1,-71.7,7.2C-72.6,-10.7,-71.4,-28.5,-63.5,-42.2C-55.7,-55.8,-41.3,-65.2,-27.5,-71.6C-13.7,-78,-0.5,-81.3,14.7,-77.9C29.9,-74.4,59.7,-64.2,71.1,-48.9C82.5,-33.7,75.5,-13.4,73.5,5.5C71.5,24.4,74.5,48.8,67.7,65.5C60.9,82.1,44.3,91.1,28.4,89.8C12.5,88.6,-2.8,77.1,-18.8,69.2C-34.7,61.3,-51.2,57,-62.9,47.5C-74.6,38,-81.5,23.4,-82.3,8.3C-83.1,-6.8,-77.8,-22.3,-68.7,-34.1C-59.6,-45.9,-46.6,-54,-33.4,-60.7C-20.1,-67.4,-6.7,-72.7,7.6,-73.6C21.9,-74.5,43.8,-71,55.3,-60.6C66.8,-50.2,67.9,-32.9,71.2,-16.9C74.5,-0.9,80,13.7,78.9,27.9C77.8,42.1,70,55.8,58.2,64.3C46.4,72.8,30.6,76.1,15.9,75.6C1.2,75.1,-12.4,70.8,-23.4,64.2C-34.4,57.6,-43.7,48.7,-52.1,38.7C-60.5,28.8,-67.9,17.8,-71.2,5.2C-74.5,-7.3,-73.7,-21.4,-67.2,-32.8C-60.7,-44.1,-48.5,-52.7,-35.7,-59.7C-22.9,-66.7,-9.6,-72.1,4.3,-72.7C18.1,-73.4,36.3,-69.3,44.1,-58.2Z"/></svg>');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            padding: var(--space-xl);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            height: 100%;
+    
+        }
+
+        .testimonial-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-rating {
+            color: var(--accent);
+            margin-bottom: var(--space-md);
+            font-size: var(--text-lg);
+        }
+
+        .testimonial-text {
+            color: var(--text-primary);
+            font-style: italic;
+            margin-bottom: var(--space-xl);
+            position: relative;
+            line-height: 1.8;
+            direction: rtl;
+            text-align: justify;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: var(--text-3xl);
+            color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-text::before {
+            top: -15px;
+            right: -10px;
+        }
+
+        .testimonial-text::after {
+            bottom: -25px;
+            left: -10px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            position: absolute;
+            bottom: 1.5rem;
+            direction: rtl;
+            right: 3rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-full);
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .author-info {
+            text-align: right;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .author-role {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        /* CTA section */
+        .cta {
+            background: var(--gradient-primary);
+            color: var(--white);
+            text-align: center;
+            padding: var(--space-3xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23ffffff10" d="M44.1,-58.2C57.1,-51.8,67.3,-37.8,73.1,-21.7C78.9,-5.5,80.4,12.8,74.6,27.9C68.8,43.1,55.8,55.2,40.7,63.4C25.6,71.5,8.3,75.8,-8.3,75.6C-25,75.4,-49.9,70.8,-61.6,58.3C-73.3,45.8,-71.7,25.4,-68.2,7.7C-64.7,-10.1,-59.2,-25.2,-51.3,-37.3C-43.4,-49.4,-33.1,-58.5,-20.6,-65.1C-8.1,-71.7,6.6,-75.7,22.5,-73.6C38.3,-71.5,55.2,-63.3,66.1,-50.7C77.1,-38.1,82.1,-21.2,81.3,-5.1C80.5,11.1,73.8,26.3,64.4,38.4C55,50.5,42.8,59.4,29.9,67.9C17,76.3,3.4,84.2,-11.9,83.3C-27.2,82.4,-44.3,72.6,-55.5,59.3C-66.7,46,-71.9,29.1,-73.4,12.3C-74.9,-4.5,-72.6,-21.3,-65.1,-34.8C-57.6,-48.3,-44.8,-58.5,-30.9,-64.2C-17,-69.8,-2,-70.8,12.2,-68.8C26.5,-66.9,52.9,-61.8,66.5,-50.3C80.1,-38.8,80.8,-20.8,81.1,-0.6C81.5,19.6,81.5,39.1,73.2,53.3C64.9,67.4,48.3,76.1,32.7,78.9C17.1,81.7,2.5,78.5,-12.4,74.3C-27.2,70.1,-42.3,64.8,-52.3,54.4C-62.3,44,-67.2,28.5,-69.7,12.6C-72.2,-3.4,-72.3,-20,-65.8,-33.4C-59.3,-46.7,-46.2,-57,-32.6,-64.7C-19,-72.4,-4.8,-77.6,10.9,-75.5C26.6,-73.4,53.2,-64,62.3,-49.9C71.4,-35.8,63,-17,62.6,0.5C62.2,18,69.8,36,66.8,51.1C63.8,66.2,50.2,78.5,35.3,83.6C20.4,88.7,4.2,86.5,-12.6,81.5C-29.4,76.5,-46.9,68.7,-57.2,55.9C-67.5,43,-70.7,25.1,-71.7,7.2C-72.6,-10.7,-71.4,-28.5,-63.5,-42.2C-55.7,-55.8,-41.3,-65.2,-27.5,-71.6C-13.7,-78,-0.5,-81.3,14.7,-77.9C29.9,-74.4,59.7,-64.2,71.1,-48.9C82.5,-33.7,75.5,-13.4,73.5,5.5C71.5,24.4,74.5,48.8,67.7,65.5C60.9,82.1,44.3,91.1,28.4,89.8C12.5,88.6,-2.8,77.1,-18.8,69.2C-34.7,61.3,-51.2,57,-62.9,47.5C-74.6,38,-81.5,23.4,-82.3,8.3C-83.1,-6.8,-77.8,-22.3,-68.7,-34.1C-59.6,-45.9,-46.6,-54,-33.4,-60.7C-20.1,-67.4,-6.7,-72.7,7.6,-73.6C21.9,-74.5,43.8,-71,55.3,-60.6C66.8,-50.2,67.9,-32.9,71.2,-16.9C74.5,-0.9,80,13.7,78.9,27.9C77.8,42.1,70,55.8,58.2,64.3C46.4,72.8,30.6,76.1,15.9,75.6C1.2,75.1,-12.4,70.8,-23.4,64.2C-34.4,57.6,-43.7,48.7,-52.1,38.7C-60.5,28.8,-67.9,17.8,-71.2,5.2C-74.5,-7.3,-73.7,-21.4,-67.2,-32.8C-60.7,-44.1,-48.5,-52.7,-35.7,-59.7C-22.9,-66.7,-9.6,-72.1,4.3,-72.7C18.1,-73.4,36.3,-69.3,44.1,-58.2Z"/></svg>');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-text {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-xl);
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-secondary);
+            padding: var(--space-3xl) 0 var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(30, 41, 59, 0.1) 100%);
+            z-index: 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            margin-bottom: var(--space-lg);
+        }
+
+        .footer-logo {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-slogan {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        .footer-about {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            font-size: var(--text-sm);
+            line-height: 1.8;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gradient-primary);
+            box-shadow: 0 4px 15px rgba(129, 140, 248, 0.3);
+        }
+
+        .footer-title {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            position: relative;
+            padding-bottom: var(--space-sm);
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs) 0;
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+            transform: translateX(-5px);
+        }
+
+        .footer-link i {
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .footer-link:hover i {
+            transform: translateX(5px);
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-primary);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            font-size: var(--text-sm);
+        }
+
+        .contact-label {
+            color: var(--text-secondary);
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+
+        .contact-value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: var(--space-xl);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-links-bottom {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .footer-link-bottom {
+            color: var(--text-secondary);
+            transition: var(--transition);
+            font-size: var(--text-sm);
+        }
+
+        .footer-link-bottom:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            opacity: 0.8;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-lg);
+            left: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Language switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .language-btn:hover {
+            background-color: var(--bg-tertiary);
+        }
+
+        .language-flag {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            padding: var(--space-sm);
+            min-width: 150px;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            transform: translateY(10px);
+        }
+
+        .language-switcher:hover .language-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .language-item:hover {
+            background-color: var(--bg-tertiary);
+        }
+
+        /* Animations */
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .animate__scaleIn {
+            animation: scaleIn 0.6s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .wave {
+            transform-origin: 70% 70%;
+            display: inline-block;
+        }
+
+        /* Swiper styles */
+        .swiper {
+            width: 100%;
+            padding: var(--space-xl) 0;
+        }
+
+        .swiper-slide {
+            height: auto;
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background-color: var(--text-secondary);
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--primary);
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* Loading spinner */
+        .loader {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+            margin-left: var(--space-xs);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: var(--text-4xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--text-lg);
+                margin-bottom: var(--space-2xl);
+            }
+
+            .search-container{
+                max-width: 555px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: var(--header-height);
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - var(--header-height));
+                background-color: var(--bg-secondary);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: var(--space-xl);
+                gap: var(--space-md);
+                transition: var(--transition-slow);
+                z-index: 999;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .search-btn {
+                padding: var(--space-md);
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl);
+            }
+
+            .section-subtitle {
+                font-size: var(--text-base);
+            }
+
+            .cta-title {
+                font-size: var(--text-3xl);
+            }
+
+            .cta-text {
+                font-size: var(--text-base);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.75rem 1rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-bottom: var(--space-2xl);
+            }
+
+            .hero-content {
+                padding-bottom: 20px;
+            }
+            
+            .hero-title {
+                font-size: var(--text-3xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--text-base);
+            }
+            
+            .scroll-icon {
+                width: 25px;
+                height: 40px;
+            }         
+
+            .search-container {
+                border-radius: 30px;
+            }
+
+            .section {
+                padding: var(--space-2xl) 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .swiper-pagination {
+                bottom: 0 !important;
+            }
+
+            .search-input {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .search-button {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header {
+                padding: 0.75rem 0rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: var(--text-2xl);
+            }
+
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links-bottom {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+        }
+ 
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+            padding: 10px 0;
+        }
+        
+        .comment-slide {
+                        background-color: var(--card-bg);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+
+            flex: 0 0 100%;
+            margin: 15px;
+            transition: all 0.3s ease;
+        }
+
+                .comment-slide:hover {
+            box-shadow: var(--shadow-lg);
+            background: var(--card-hover);
+        }
+
+                .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+        
+        .pagination {
+            display: flex;
+            gap: 12px;
+        }
+                .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+           
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 0 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            font-size: 1.4rem;
+            color: var(--primary-light);
+        }
+        
+        .nav-btn:hover {
+            transform: scale(1.1);
+            background: #fdbb2d;
+            color: white;
+        }
+        
+        .auto-play-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .auto-play-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .comment-slide {
+                flex: 0 0 50%;
+            }
+            
+            .header h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .comment-slide {
+                flex: 0 0 25%;
+            }
+            
+            .header h1 {
+                font-size: 4rem;
+            }
+        }
+
+        
+        
+        .comment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+/* استایل‌های جدید برای اسکرول */
+.scroll-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+.scroll-text {
+    color: var(--white);
+    font-size: var(--text-sm);
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+    transition: var(--transition);
+    animation: fadeInOut 2s infinite;
+}
+
+.scroll-icon {
+    position: relative;
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--white);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+.scroll-arrow {
+    width: 6px;
+    height: 6px;
+    background: var(--white);
+    border-radius: 50%;
+    position: absolute;
+    animation: scrollDown 2s infinite;
+}
+
+.scroll-arrow:nth-child(1) {
+    animation-delay: 0s;
+    top: 10px;
+}
+
+.scroll-arrow:nth-child(2) {
+    animation-delay: 0.3s;
+    top: 18px;
+}
+
+.scroll-arrow:nth-child(3) {
+    animation-delay: 0.6s;
+    top: 26px;
+}
+
+/* انیمیشن‌ها */
+@keyframes scrollDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* افکت هنگام هاور */
+.scroll-prompt:hover .scroll-text {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.scroll-prompt:hover .scroll-icon {
+    border-color: var(--primary-light);
+}
+
+.scroll-prompt:hover .scroll-arrow {
+    background: var(--primary-light);
+}
+
+/* تنظیمات اصلی hero */
+.hero {
+    min-height: 100vh;
+    height: 100svh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--header-height); /* ارتفاع هدر */
+}
+
+.hero .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding-bottom: 40px; /* فاصله از پایین */
+}
+
+/* تنظیمات محتوا */
+.hero-title, 
+.hero-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* تنظیمات اسکرول پایین */
+.scroll-prompt {
+    margin-top: auto; /* این عنصر را به پایین می‌فرستد */
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* تنظیمات برای محتوای وسط */
+.hero-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+/* استایل‌های اسکرول */
+.scroll-text {
+    color: var(--white);
+    font-size: var(--text-sm);
+    margin-bottom: 10px;
+    opacity: 0.8;
+    transition: var(--transition);
+    animation: fadeInOut 2s infinite;
+}
+
+.scroll-icon {
+    position: relative;
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--white);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+.scroll-arrow {
+    width: 6px;
+    height: 6px;
+    background: var(--white);
+    border-radius: 50%;
+    position: absolute;
+    animation: scrollDown 2s infinite;
+}
+
+.scroll-arrow:nth-child(1) { animation-delay: 0s; top: 10px; }
+.scroll-arrow:nth-child(2) { animation-delay: 0.3s; top: 18px; }
+.scroll-arrow:nth-child(3) { animation-delay: 0.6s; top: 26px; }
+
+@keyframes scrollDown {
+    0% { opacity: 1; transform: translateY(0); }
+    50% { opacity: 0.5; transform: translateY(10px); }
+    100% { opacity: 0; transform: translateY(20px); }
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+
+/* استایل‌های اسکرول برای تم روشن */
+[data-theme="light"] .scroll-text {
+    color: var(--dark); /* استفاده از رنگ تاریک برای متن */
+    opacity: 0.8;
+}
+
+[data-theme="light"] .scroll-icon {
+    border-color: var(--primary); /* استفاده از رنگ اصلی برای حاشیه */
+}
+
+[data-theme="light"] .scroll-arrow {
+    background: var(--primary); /* استفاده از رنگ اصلی برای نقطه‌ها */
+}
+
+[data-theme="light"] .scroll-prompt:hover .scroll-text {
+    color: var(--primary-dark); /* تغییر رنگ هنگام هاور */
+}
+
+[data-theme="light"] .scroll-prompt:hover .scroll-icon {
+    border-color: var(--primary-dark); /* تغییر رنگ حاشیه هنگام هاور */
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3); /* سایه بنفش ملایم */
+}
+
+/* انیمیشن‌هایی که برای هر دو تم کار می‌کنند */
+.scroll-prompt {
+    transition: all 0.3s ease;
+}
+
+.scroll-icon {
+    transition: all 0.3s ease;
+}
+
+@keyframes scrollDown {
+    0% { opacity: 1; transform: translateY(-15px); }
+    50% { opacity: 0.5; transform: translateY(0px); }
+    100% { opacity: 0; transform: translateY(15px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav-container">
+                <a href="#" class="logo">
+                    زبانو
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active">خانه</a></li>
+                    <li><a href="#" class="nav-link">دوره‌ها</a></li>
+                    <li><a href="#" class="nav-link">مدرسین</a></li>
+                    <li><a href="#" class="nav-link">وبلاگ</a></li>
+                    <li><a href="#" class="nav-link">تماس با ما</a></li>
+                    <li>
+                        <div class="theme-switcher" onclick="toggleTheme()"></div>
+                    </li>
+                    <li class="language-switcher">
+                        <button class="language-btn">
+                            <img src="https://flagcdn.com/ir.svg" alt="فارسی" class="language-flag">
+                            <span>فارسی</span>
+                        </button>
+                        <div class="language-dropdown">
+                            <a href="#" class="language-item">
+                                <img src="https://flagcdn.com/gb.svg" alt="English" class="language-flag">
+                                <span>English</span>
+                            </a>
+                            <a href="#" class="language-item">
+                                <img src="https://flagcdn.com/de.svg" alt="Deutsch" class="language-flag">
+                                <span>Deutsch</span>
+                            </a>
+                            <a href="#" class="language-item">
+                                <img src="https://flagcdn.com/fr.svg" alt="Français" class="language-flag">
+                                <span>Français</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-user btn-icon"></i>
+                            ورود / ثبت‌نام
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <!-- محتوای اصلی وسط -->
+            <div class="hero-main-content">
+                <h1 class="hero-title">زبان دنیاست، با <span class="highlight">زبانو</span> دنیات رو بزرگ کن! <span class="wave">🚀</span></h1>
+                <p class="hero-subtitle">یادگیری ۱۲ زبان زنده دنیا با متدهای آکادمیک و همراهی اساتید حرفه‌ای در هر لحظه</p>
+                
+                <div class="search-container animate__scaleIn">
+                    <form class="search-form">
+                        <input type="text" placeholder="دوست داری چه زبانی رو یاد بگیری؟ (مثل انگلیسی، فرانسه، آلمانی...)" 
+                               class="search-input">
+                        <button type="submit" class="search-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                 stroke-linejoin="round" class="feather feather-search">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <span class="search-text">شروع یادگیری</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- اسکرول پایین -->
+            <div class="hero-cta">
+                <div class="scroll-prompt">
+                    <span class="scroll-text">با ما همراه شو</span>
+                    <div class="scroll-icon">
+                        <div class="scroll-arrow"></div>
+                        <div class="scroll-arrow"></div>
+                        <div class="scroll-arrow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Courses section -->
+    <section class="section courses" id="courses">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">دوره‌های آموزشی ما</h2>
+                <p class="section-subtitle">برترین دوره‌ها با جدیدترین متدهای آموزشی روز دنیا</p>
+            </div>
+            
+            <div class="swiper courses-slider">
+                <div class="swiper-wrapper courses-grid">
+                    <!-- Course 1 -->
+                    <div class="swiper-slide">
+                        <div class="course-card">
+                            <div class="course-badge">پرفروش</div>
+                            <div class="course-image-container">
+                                <img src="english4.png" 
+                                     alt="آموزش زبان انگلیسی" 
+                                     class="course-image"
+                                     loading="lazy">
+                                <div class="course-overlay"></div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-tags">
+                                    <span class="course-tag">
+                                        <i class="fas fa-star"></i>
+                                        ۴.۹ (۱۲۰ نظر)
+                                    </span>
+                                    <span class="course-tag">
+                                        <i class="fas fa-user-graduate"></i>
+                                        ۲۳۰۰+ دانشجو
+                                    </span>
+                                </div>
+                                <h3 class="course-title">آموزش جامع زبان انگلیسی</h3>
+                                <p class="course-description">آموزش زبان انگلیسی از پایه تا پیشرفته با جدیدترین متدهای روز دنیا و تمرکز بر مکالمه روزمره</p>
+                                
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        ۸۰ ساعت
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-level-up-alt"></i>
+                                        سطح: مبتدی تا پیشرفته
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="--progress: 75%"></div>
+                                    <span class="progress-text">۷۵% تکمیل شده</span>
+                                </div>
+                                
+                                <div class="course-footer">
+                                    <div class="course-price">
+                                        <span class="price-old">۲۹۰,۰۰۰ تومان</span>
+                                        <span class="price-new">۱۹۹,۰۰۰ تومان</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 2 -->
+                    <div class="swiper-slide">
+                        <div class="course-card">
+                            <div class="course-badge accent">جدید</div>
+                            <div class="course-image-container">
+                                <img src="english5.png" 
+                                     alt="آموزش زبان فرانسه" 
+                                     class="course-image"
+                                     loading="lazy">
+                                <div class="course-overlay"></div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-tags">
+                                    <span class="course-tag">
+                                        <i class="fas fa-star"></i>
+                                        ۴.۸ (۸۵ نظر)
+                                    </span>
+                                    <span class="course-tag">
+                                        <i class="fas fa-user-graduate"></i>
+                                        ۱۵۰۰+ دانشجو
+                                    </span>
+                                </div>
+                                <h3 class="course-title">آموزش زبان فرانسه</h3>
+                                <p class="course-description">یادگیری زبان فرانسه با تمرکز بر مکالمه و گرامر به صورت کاربردی و عملی</p>
+                                
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        ۶۰ ساعت
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-level-up-alt"></i>
+                                        سطح: مبتدی تا متوسط
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="--progress: 40%"></div>
+                                    <span class="progress-text">۴۰% تکمیل شده</span>
+                                </div>
+                                
+                                <div class="course-footer">
+                                    <div class="course-price">
+                                        <span class="price-old">۲۴۰,۰۰۰ تومان</span>
+                                        <span class="price-new">۱۷۹,۰۰۰ تومان</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 3 -->
+                    <div class="swiper-slide">
+                        <div class="course-card">
+                            <div class="course-badge">پرطرفدار</div>
+                            <div class="course-image-container">
+                                <img src="english6.png" 
+                                     alt="آموزش زبان آلمانی" 
+                                     class="course-image"
+                                     loading="lazy">
+                                <div class="course-overlay"></div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-tags">
+                                    <span class="course-tag">
+                                        <i class="fas fa-star"></i>
+                                        ۴.۷ (۹۵ نظر)
+                                    </span>
+                                    <span class="course-tag">
+                                        <i class="fas fa-user-graduate"></i>
+                                        ۱۸۰۰+ دانشجو
+                                    </span>
+                                </div>
+                                <h3 class="course-title">آموزش زبان آلمانی</h3>
+                                <p class="course-description">آموزش زبان آلمانی برای مهاجرت و تحصیل با تمرکز بر آزمون‌های بین‌المللی</p>
+                                
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        ۱۰۰ ساعت
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-level-up-alt"></i>
+                                        سطح: مبتدی تا پیشرفته
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="--progress: 90%"></div>
+                                    <span class="progress-text">۹۰% تکمیل شده</span>
+                                </div>
+                                
+                                <div class="course-footer">
+                                    <div class="course-price">
+                                        <span class="price-old">۳۵۰,۰۰۰ تومان</span>
+                                        <span class="price-new">۲۹۹,۰۰۰ تومان</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 4 -->
+                    <div class="swiper-slide">
+                        <div class="course-card">
+                            <div class="course-badge accent">جدید</div>
+                            <div class="course-image-container">
+                                <img src="english.png" 
+                                     alt="آموزش زبان اسپانیایی" 
+                                     class="course-image"
+                                     loading="lazy">
+                                <div class="course-overlay"></div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-tags">
+                                    <span class="course-tag">
+                                        <i class="fas fa-star"></i>
+                                        ۴.۶ (۷۵ نظر)
+                                    </span>
+                                    <span class="course-tag">
+                                        <i class="fas fa-user-graduate"></i>
+                                        ۱۲۰۰+ دانشجو
+                                    </span>
+                                </div>
+                                <h3 class="course-title">آموزش زبان اسپانیایی</h3>
+                                <p class="course-description">یادگیری زبان اسپانیایی برای سفر و کار با تمرکز بر مکالمات روزمره و اصطلاحات کاربردی</p>
+                                
+                                <div class="course-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        ۵۰ ساعت
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-level-up-alt"></i>
+                                        سطح: مبتدی تا متوسط
+
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="--progress: 60%"></div>
+                                    <span class="progress-text">۶۰% تکمیل شده</span>
+                                </div>
+                                
+                                <div class="course-footer">
+                                    <div class="course-price">
+                                        <span class="price-old">۲۲۰,۰۰۰ تومان</span>
+                                        <span class="price-new">۱۷۹,۰۰۰ تومان</span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+            <div class="view-all text-center">
+                <a href="#" class="btn btn-outline">
+                    مشاهده همه دوره‌ها
+                    <i class="fas fa-arrow-left btn-icon"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features section -->
+    <section class="section features">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">چرا زبانو؟</h2>
+                <p class="section-subtitle">مزیت‌های منحصر به فرد پلتفرم آموزشی ما</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon-bg"></div>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">پشتیبانی ۲۴/۷</h3>
+                    <p class="feature-description">پاسخگویی فوری توسط تیم پشتیبانی متخصص در تمام ساعات شبانه روز</p>
+                    <div class="feature-hover"></div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon-bg"></div>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">ضمانت بازگشت</h3>
+                    <p class="feature-description">۳۰ روز گارانتی بازگشت وجه در صورت عدم رضایت از دوره‌ها</p>
+                    <div class="feature-hover"></div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon-bg"></div>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">دسترسی دائمی</h3>
+                    <p class="feature-description">استفاده در تمام دستگاه‌ها بدون محدودیت و دانلود ویدیوها</p>
+                    <div class="feature-hover"></div>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon-bg"></div>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.471v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">مدرک معتبر</h3>
+                    <p class="feature-description">گواهینامه بین‌المللی قابل استعلام پس از اتمام دوره</p>
+                    <div class="feature-hover"></div>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon-bg"></div>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-5.342m0 0a50.73 50.73 0 013.994 5.115 50.724 50.724 0 01-3.994 5.115m0 0a50.793 50.793 0 01-4.9-5.127 50.79 50.79 0 014.9-5.127m0 0a50.697 50.697 0 013.994 5.127 50.694 50.694 0 01-3.994 5.127"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">مدرسین متخصص</h3>
+                    <p class="feature-description">آموزش توسط برترین مدرسین با سابقه تدریس بین‌المللی</p>
+                    <div class="feature-hover"></div>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon-bg"></div>
+                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">گفتگوی آنلاین</h3>
+                    <p class="feature-description">امکان گفتگوی مستقیم با مدرسین و پرسش سوالات درسی</p>
+                    <div class="feature-hover"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials section -->
+    <section class="section testimonials" dir="ltr">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">نظرات دانشجویان</h2>
+                <p class="section-subtitle">تجربه یادگیری زبان با زبانو از زبان کاربران</p>
+            </div>
+            
+            <div class="swiper testimonials-slider comments-slider">
+                <div class="swiper-wrapper slider-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="comment-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                دوره آموزش انگلیسی زبانو واقعا عالی بود. بعد از ۳ ماه توانستم به راحتی مکالمه کنم. مدرسین بسیار حرفه‌ای و پشتیبانی عالی داشت.
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="نازنین محمدی" class="author-avatar">
+                                <div class="author-info">
+                                    <div class="author-name">نازنین محمدی</div>
+                                    <div class="author-role">دانشجوی زبان انگلیسی</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="comment-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                برای مهاجرت به آلمان نیاز به یادگیری زبان داشتم. با دوره‌های زبانو در ۶ ماه به سطح B2 رسیدم و الان در آلمان زندگی می‌کنم. ممنون از تیم حرفه‌ای زبانو.
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="امیر حسینی" class="author-avatar">
+                                <div class="author-info">
+                                    <div class="author-name">امیر حسینی</div>
+                                    <div class="author-role">دانشجوی زبان آلمانی</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="comment-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                روش تدریس مدرسین زبانو واقعا متفاوته. تمرکز بر مکالمه روزمره و کاربردی باعث شده خیلی سریع پیشرفت کنم. قیمت دوره‌ها هم نسبت به کیفیت بسیار مناسب است.
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="سارا رضایی" class="author-avatar">
+                                <div class="author-info">
+                                    <div class="author-name">سارا رضایی</div>
+                                    <div class="author-role">دانشجوی زبان فرانسه</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="comment-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">
+                                به عنوان کسی که قبلا در چند آموزشگاه زبان شرکت کرده بودم، باید بگویم روش تدریس زبانو واقعا منحصر به فرد و موثره. بعد از ۴ ماه می‌تونم با اعتماد به نفس کامل انگلیسی صحبت کنم.
+                            </p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="محمد علیزاده" class="author-avatar">
+                                <div class="author-info">
+                                    <div class="author-name">محمد علیزاده</div>
+                                    <div class="author-role">دانشجوی زبان انگلیسی</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="slider-controls">
+                <div class="nav-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="pagination"></div>
+                <div class="nav-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            
+        </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">آماده شروع یادگیری هستید؟</h2>
+                <p class="cta-text">همین حالا ثبت‌نام کنید و به جمع هزاران دانشجوی راضی زبانو بپیوندید.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-white">
+                        <i class="fas fa-user-plus btn-icon"></i>
+                        ثبت‌نام رایگان
+                    </a>
+                    <a href="#" class="btn btn-transparent">
+                        <i class="fas fa-phone-alt btn-icon"></i>
+                        مشاوره رایگان
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About column -->
+                <div class="footer-column">
+                    <div class="footer-brand">
+                        <span class="footer-logo">زبانو</span>
+                        <p class="footer-slogan">یادگیری زبان رو لذتبخش کنید</p>
+                    </div>
+                    <p class="footer-about">
+                        زبانو اولین پلتفرم آموزش زبان با سیستم هوشمند تطبیقی مبتنی بر هوش مصنوعی است که یادگیری زبان را برای همه آسان و لذت‌بخش کرده است.
+                    </p>
+                    <div class="footer-social">
+                        <!-- اینستاگرام -->
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+
+                        <!-- تلگرام -->
+                        <a href="#" class="social-link" aria-label="Telegram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 2L11 13"></path>
+                                <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                            </svg>
+                        </a>
+
+                        <!-- یوتیوب -->
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+
+                        <!-- توییتر (X) -->
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Links column 1 -->
+                <div class="footer-column">
+                    <h3 class="footer-title">لینک‌های سریع</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            دوره‌های آموزشی
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            مدرسین متخصص
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            وبلاگ آموزشی
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            سوالات متداول
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            راهنمای استفاده
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Links column 2 -->
+                <div class="footer-column">
+                    <h3 class="footer-title">خدمات ما</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            آموزش آنلاین
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            آزمون‌های بین‌المللی
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            مشاوره مهاجرت
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            ترجمه تخصصی
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-left"></i>
+                            کلاس‌های خصوصی
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Contact column -->
+                <div class="footer-column">
+                    <h3 class="footer-title">ارتباط با ما</h3>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">پشتیبانی تلفنی</span>
+                                <span class="contact-value">۰۲۱-۱۲۳۴۵۶۷۸</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">ایمیل</span>
+                                <span class="contact-value">info@zabano.ir</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">آدرس</span>
+                                <span class="contact-value">تهران، خیابان آزادی، پلاک ۱۲۳</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-links-bottom">
+                    <a href="#" class="footer-link-bottom">قوانین و مقررات</a>
+                    <a href="#" class="footer-link-bottom">حریم خصوصی</a>
+                    <a href="#" class="footer-link-bottom">روش‌های پرداخت</a>
+                    <a href="#" class="footer-link-bottom">همکاری با ما</a>
+                </div>
+                <p class="copyright">© ۱۴۰۳ • ساخته شده با ❤️ توسط تیم زبانو</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper for courses slider
+        const coursesSwiper = new Swiper('.courses-slider', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.courses-slider .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+
+        const sliderWrapper = document.querySelector('.slider-wrapper');
+        const slides = document.querySelectorAll('.comment-slide');
+        const pagination = document.querySelector('.pagination');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        
+        let slideIndex = 0;
+        let autoPlayInterval;
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID;
+        
+        // Create pagination dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === slideIndex) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            pagination.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.dot');
+        
+        // Determine slides per view based on screen width
+        function getSlidesPerView() {
+            if (window.innerWidth < 768) return 1;
+            if (window.innerWidth < 992) return 2;
+            return 4;
+        }
+        
+        // Update slider position
+        function updateSliderPosition() {
+            const slidesPerView = getSlidesPerView();
+            const slideWidth = sliderWrapper.clientWidth / slidesPerView + 30;
+            sliderWrapper.style.transform = `translateX(-${slideIndex * slideWidth + 15}px)`;
+            
+            // Update active dot
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+        }
+        
+        // Go to specific slide
+        function goToSlide(index) {
+            slideIndex = index;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            updateSliderPosition();
+        }
+        
+        // Next slide
+        function nextSlide() {
+            slideIndex++;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            updateSliderPosition();
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            slideIndex--;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            updateSliderPosition();
+        }
+        
+        // Touch and mouse events for dragging
+        slides.forEach(slide => {
+            // Touch events
+            slide.addEventListener('touchstart', touchStart);
+            slide.addEventListener('touchend', touchEnd);
+            slide.addEventListener('touchmove', touchMove);
+            
+            // Mouse events
+            slide.addEventListener('mousedown', touchStart);
+            slide.addEventListener('mouseup', touchEnd);
+            slide.addEventListener('mouseleave', touchEnd);
+            slide.addEventListener('mousemove', touchMove);
+        });
+        
+        function touchStart(event) {
+            event.preventDefault();
+            isDragging = true;
+            startPos = getPositionX(event);
+            
+            animationID = requestAnimationFrame(animation);
+            sliderWrapper.style.transition = 'none';
+        }
+        
+        function touchEnd() {
+            isDragging = false;
+            cancelAnimationFrame(animationID);
+            
+            const slidesPerView = getSlidesPerView();
+            const movedBy = currentTranslate - prevTranslate;
+            
+            if (movedBy < -100) nextSlide();
+            if (movedBy > 100) prevSlide();
+            
+            sliderWrapper.style.transition = 'transform 0.5s ease';
+            currentTranslate = 0;
+            prevTranslate = 0;
+            setSliderPosition();
+        }
+        
+        function touchMove(event) {
+            if (isDragging) {
+                const currentPosition = getPositionX(event);
+                currentTranslate = currentPosition - startPos;
+            }
+        }
+        
+        function getPositionX(event) {
+            return event.type.includes('mouse') ? 
+                event.pageX : 
+                event.touches[0].clientX;
+        }
+        
+        // Event listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        // Initialize
+        updateSliderPosition();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            updateSliderPosition();
+        });
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Close menu when clicking outside (for mobile)
+        document.addEventListener('click', (e) => {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            if (!e.target.closest('.nav-container') && window.innerWidth <= 992) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navLinks = document.querySelector('.nav-links');
+                    const hamburger = document.querySelector('.hamburger');
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Animation on scroll for course cards, feature cards, and testimonials
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.course-card, .feature-card, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animated');
+                }
+            });
+        };
+
+        // Run animation on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Form submission with loading indicator
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const submitButton = this.querySelector('button[type="submit"]');
+                if (submitButton) {
+                    const loader = document.createElement('div');
+                    loader.className = 'loader';
+                    submitButton.insertAdjacentElement('beforeend', loader);
+                    submitButton.disabled = true;
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        loader.remove();
+                        submitButton.disabled = false;
+                    }, 2000);
+                }
+            });
+        });
+
+        // Touch device hover fix
+        document.querySelectorAll('.btn, .course-card, .feature-card').forEach(element => {
+            element.addEventListener('touchstart', () => {
+                element.classList.add('hover-effect');
+                setTimeout(() => element.classList.remove('hover-effect'), 500);
+            });
+        });
+
+        // اسکریپت اسکرول
+document.querySelector('.scroll-prompt').addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetSection = document.querySelector('#courses');
+    
+    if (targetSection) {
+        window.scrollTo({
+            top: targetSection.offsetTop - 80,
+            behavior: 'smooth'
+        });
+    }
+});
+    </script>
+</body>
+</html>
+
+<!-- در بخش <head> -->
+<style>
+  :root {
+    /* متغیرهای پایه که در همه تم‌ها مشترک هستند */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --radius-sm: 0.25rem;
+    --radius: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --transition: all 0.3s ease;
+    --header-height: 80px;
+  }
+
+  /* استایل پنل انتخاب تم */
+  .theme-switcheri {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+  }
+  
+  .theme-toggle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+  }
+  
+  .theme-panel {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 280px;
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-xl);
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+  }
+  
+  .theme-panel.show {
+    transform: scale(1);
+  }
+  
+  .theme-panel h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+  }
+  
+  .theme-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+  
+  .theme-option {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+  }
+  
+  .theme-option:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .theme-option.active {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-extra-light);
+  }
+
+  .theme-primery {
+    background: linear-gradient(135deg, #6366f1, #818cf8);
+  }
+  
+  /* رنگ‌بندی تم‌ها */
+  .theme-luxury {
+    background: linear-gradient(135deg, #d97706, #92400e);
+  }
+  
+  .theme-ocean {
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+  }
+  
+  .theme-neon {
+    background: linear-gradient(135deg, #6d28d9, #06b6d4);
+  }
+  
+  .theme-purple {
+    background: linear-gradient(135deg, #8b5cf6, #c4b5fd);
+  }
+  
+  .theme-royal {
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+  }
+</style>
+
+<!-- در بخش <body> -->
+<div class="theme-switcheri">
+  <button class="theme-toggle-btn">🎨</button>
+  <div class="theme-panel">
+    <h3>انتخاب تم</h3>
+    <div class="theme-options">
+      <div class="theme-option theme-primery" data-theme="primery"></div>
+      <div class="theme-option theme-luxury" data-theme="luxury"></div>
+      <div class="theme-option theme-ocean" data-theme="ocean"></div>
+      <div class="theme-option theme-neon" data-theme="neon"></div>
+      <div class="theme-option theme-purple" data-theme="purple"></div>
+      <div class="theme-option theme-royal" data-theme="royal"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleBtn = document.querySelector('.theme-toggle-btn');
+  const themePanel = document.querySelector('.theme-panel');
+  const themeOptions = document.querySelectorAll('.theme-option');
+  
+  // توابع تغییر تم
+  function setTheme(themeName) {
+
+    // حذف تمام کلاس‌های تم
+    document.documentElement.className = '';
+    
+    // اضافه کردن تم انتخاب شده
+    document.documentElement.classList.add(`theme-${themeName}`);
+    
+    // ذخیره در localStorage
+    localStorage.setItem('selectedTheme', themeName);
+    
+    // آپدیت دکمه
+    updateToggleButton(themeName);
+  }
+  
+  function updateToggleButton(themeName) {
+    const colors = {
+      'primery': 'linear-gradient(135deg, #6366f1, #818cf8)',
+      'luxury': 'linear-gradient(135deg, #d97706, #92400e)',
+      'ocean': 'linear-gradient(135deg, #2563eb, #06b6d4)',
+      'neon': 'linear-gradient(135deg, #6d28d9, #06b6d4)',
+      'purple': 'linear-gradient(135deg, #8b5cf6, #c4b5fd)',
+      'royal': 'linear-gradient(135deg, #a855f7, #ec4899)'
+    };
+    toggleBtn.style.background = colors[themeName];
+  }
+  
+  // رویدادهای کلیک
+  toggleBtn.addEventListener('click', () => {
+    themePanel.classList.toggle('show');
+  });
+  
+  themeOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      const themeName = this.dataset.theme;
+      setTheme(themeName);
+      
+      // علامت‌گذاری تم فعال
+      themeOptions.forEach(opt => opt.classList.remove('active'));
+      this.classList.add('active');
+      
+      // بستن پنل
+      themePanel.classList.remove('show');
+    });
+  });
+  
+  // بارگذاری تم ذخیره شده
+  const savedTheme = localStorage.getItem('selectedTheme') || 'luxury';
+  setTheme(savedTheme);
+  
+  // علامت‌گذاری تم فعال
+  document.querySelector(`.theme-option[data-theme="${savedTheme}"]`).classList.add('active');
+});
+
+// تعریف تم‌ها در CSS
+const themes = {
+    primery: `
+    :root, :root.theme-primery {
+        --primary: #6366f1;
+        --primary-light: #818cf8;
+        --primary-dark: #4f46e5;
+        --primary-extra-light: #e0e7ff;
+        --secondary: #10b981;
+        --accent: #f59e0b;
+        --danger: #ef4444;
+        --dark: #0f172a;
+        --dark-light: #1e293b;
+        --gray-dark: #334155;
+        --gray: #64748b;
+        --gray-light: #cbd5e1;
+        --light: #f8fafc;
+        --white: #ffffff;
+        --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+        --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        --gradient-accent: linear-gradient(135deg, var(--accent), #fbbf24);
+        --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        --shadow-primary: 0 10px 15px -3px rgba(99, 102, 241, 0.3), 0 4px 6px -2px rgba(99, 102, 241, 0.2);
+        --shadow-accent: 0 10px 15px -3px rgba(245, 158, 11, 0.3), 0 4px 6px -2px rgba(245, 158, 11, 0.2);
+        --radius-sm: 0.25rem;
+        --radius: 0.5rem;
+        --radius-md: 0.75rem;
+        --radius-lg: 1rem;
+        --radius-xl: 1.5rem;
+        --radius-full: 9999px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        --header-height: 80px;
+    }
+    [data-theme="dark"].theme-primery {
+        --bg-primary: var(--dark);
+        --bg-secondary: var(--dark-light);
+        --bg-tertiary: #1a2238;
+        --text-primary: var(--light);
+        --text-secondary: var(--gray-light);
+        --text-tertiary: var(--gray);
+        --border-color: rgba(255, 255, 255, 0.1);
+        --glass-bg: rgba(30, 41, 59, 0.7);
+        --card-bg: var(--dark-light);
+        --card-hover: rgba(255, 255, 255, 0.05);
+        --hero-overlay: radial-gradient(circle, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%);
+    }
+    [data-theme="light"].theme-primery {
+        --bg-primary: var(--light);
+        --bg-secondary: var(--white);
+        --bg-tertiary: #f1f5f9;
+        --text-primary: var(--dark);
+        --text-secondary: var(--gray-dark);
+        --text-tertiary: var(--gray);
+        --border-color: rgba(0, 0, 0, 0.1);
+        --glass-bg: rgba(255, 255, 255, 0.7);
+        --card-bg: var(--white);
+        --card-hover: rgba(0, 0, 0, 0.05);
+        --hero-overlay: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%);
+    }`,
+  luxury: `
+    :root, :root.theme-luxury {
+      --primary: #d97706;
+      --primary-light: #f59e0b;
+      --primary-dark: #b45309;
+      --primary-extra-light: #fef3c7;
+      --secondary: #92400e;
+      --accent: #facc15;
+      --danger: #b91c1c;
+      --dark: #1c1917;
+      --dark-light: #292524;
+      --gray-dark: #44403c;
+      --gray: #78716c;
+      --gray-light: #d6d3d1;
+      --light: #f5f5f4;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, var(--primary), #fcd34d);
+      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #f59e0b);
+      --gradient-accent: linear-gradient(135deg, var(--accent), #fde047);
+      --gradient-card: linear-gradient(180deg, rgba(217, 119, 6, 0.1) 0%, rgba(146, 64, 14, 0.05) 100%);
+      --shadow-primary: 0 10px 15px -3px rgba(217, 119, 6, 0.4), 0 4px 6px -2px rgba(217, 119, 6, 0.3);
+      --shadow-accent: 0 10px 15px -3px rgba(250, 204, 21, 0.4), 0 4px 6px -2px rgba(250, 204, 21, 0.3);
+    }
+    [data-theme="dark"].theme-luxury {
+      --bg-primary: #1c1917;
+      --bg-secondary: #292524;
+      --bg-tertiary: #44403c;
+      --text-primary: #fef3c7;
+      --text-secondary: #fde68a;
+      --text-tertiary: #fcd34d;
+      --border-color: rgba(252, 211, 77, 0.15);
+      --glass-bg: rgba(41, 37, 36, 0.85);
+      --card-bg: rgba(68, 64, 60, 0.7);
+      --card-hover: rgba(253, 230, 138, 0.1);
+      --hero-overlay: radial-gradient(circle, rgba(28, 25, 23, 0.7) 0%, rgba(28, 25, 23, 0.95) 100%);
+    }
+    [data-theme="light"].theme-luxury {
+      --bg-primary: #f5f5f4;
+      --bg-secondary: #e7e5e4;
+      --bg-tertiary: #d6d3d1;
+      --text-primary: #1c1917;
+      --text-secondary: #44403c;
+      --text-tertiary: #78716c;
+      --border-color: rgba(28, 25, 23, 0.1);
+      --glass-bg: rgba(231, 229, 228, 0.85);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-hover: rgba(28, 25, 23, 0.05);
+      --hero-overlay: radial-gradient(circle, rgba(245, 245, 244, 0.7) 0%, rgba(245, 245, 244, 0.95) 100%);
+    }
+  `,
+  ocean: `
+    :root, :root.theme-ocean {
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
+      --primary-dark: #1d4ed8;
+      --primary-extra-light: #dbeafe;
+      --secondary: #06b6d4;
+      --accent: #f59e0b;
+      --danger: #ef4444;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --gray-dark: #334155;
+      --gray: #64748b;
+      --gray-light: #cbd5e1;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, var(--primary), #60a5fa);
+      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #3b82f6);
+      --gradient-accent: linear-gradient(135deg, var(--accent), #fbbf24);
+      --gradient-card: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+      --shadow-primary: 0 10px 15px -3px rgba(37, 99, 235, 0.4), 0 4px 6px -2px rgba(37, 99, 235, 0.3);
+      --shadow-accent: 0 10px 15px -3px rgba(245, 158, 11, 0.4), 0 4px 6px -2px rgba(245, 158, 11, 0.3);
+    }
+    [data-theme="dark"].theme-ocean {
+      --bg-primary: #020617;
+      --bg-secondary: #0f172a;
+      --bg-tertiary: #1e293b;
+      --text-primary: #e0f2fe;
+      --text-secondary: #bae6fd;
+      --text-tertiary: #7dd3fc;
+      --border-color: rgba(125, 211, 252, 0.15);
+      --glass-bg: rgba(15, 23, 42, 0.85);
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-hover: rgba(186, 230, 253, 0.1);
+      --hero-overlay: radial-gradient(circle, rgba(2, 6, 23, 0.7) 0%, rgba(2, 6, 23, 0.95) 100%);
+    }
+    [data-theme="light"].theme-ocean {
+      --bg-primary: #f0f9ff;
+      --bg-secondary: #e0f2fe;
+      --bg-tertiary: #bae6fd;
+      --text-primary: #082f49;
+      --text-secondary: #075985;
+      --text-tertiary: #0c4a6e;
+      --border-color: rgba(8, 47, 73, 0.1);
+      --glass-bg: rgba(224, 242, 254, 0.85);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-hover: rgba(8, 47, 73, 0.05);
+      --hero-overlay: radial-gradient(circle, rgba(240, 249, 255, 0.7) 0%, rgba(240, 249, 255, 0.95) 100%);
+    }
+  `,
+  neon: `
+    :root, :root.theme-neon {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --primary-dark: #5b21b6;
+      --primary-extra-light: #ede9fe;
+      --secondary: #06b6d4;
+      --accent: #f97316;
+      --danger: #ef4444;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --gray-dark: #334155;
+      --gray: #64748b;
+      --gray-light: #cbd5e1;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, var(--primary), #a78bfa);
+      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #7c3aed);
+      --gradient-accent: linear-gradient(135deg, var(--accent), #fb923c);
+      --gradient-card: linear-gradient(180deg, rgba(109, 40, 217, 0.15) 0%, rgba(109, 40, 217, 0.05) 100%);
+      --shadow-primary: 0 10px 15px -3px rgba(109, 40, 217, 0.4), 0 4px 6px -2px rgba(109, 40, 217, 0.3);
+      --shadow-accent: 0 10px 15px -3px rgba(249, 115, 22, 0.4), 0 4px 6px -2px rgba(249, 115, 22, 0.3);
+    }
+    [data-theme="dark"].theme-neon {
+      --bg-primary: #0b0a1a;
+      --bg-secondary: #1e1b3a;
+      --bg-tertiary: #2a2750;
+      --text-primary: #f5f3ff;
+      --text-secondary: #c7d2fe;
+      --text-tertiary: #a5b4fc;
+      --border-color: rgba(165, 180, 252, 0.15);
+      --glass-bg: rgba(30, 27, 58, 0.85);
+      --card-bg: rgba(30, 27, 58, 0.7);
+      --card-hover: rgba(165, 180, 252, 0.1);
+      --hero-overlay: radial-gradient(circle, rgba(11, 10, 26, 0.7) 0%, rgba(11, 10, 26, 0.95) 100%);
+    }
+    [data-theme="light"].theme-neon {
+      --bg-primary: #f5f3ff;
+      --bg-secondary: #ede9fe;
+      --bg-tertiary: #ddd6fe;
+      --text-primary: #1e1b3a;
+      --text-secondary: #4c1d95;
+      --text-tertiary: #5b21b6;
+      --border-color: rgba(109, 40, 217, 0.2);
+      --glass-bg: rgba(237, 233, 254, 0.85);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-hover: rgba(109, 40, 217, 0.08);
+      --hero-overlay: radial-gradient(circle, rgba(245, 243, 255, 0.7) 0%, rgba(245, 243, 255, 0.95) 100%);
+    }
+  `,
+  purple: `
+    :root, :root.theme-purple {
+      --primary: #8b5cf6;
+      --primary-light: #a78bfa;
+      --primary-dark: #7c3aed;
+      --primary-extra-light: #ede9fe;
+      --secondary: #06b6d4;
+      --accent: #f97316;
+      --danger: #f43f5e;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --gray-dark: #334155;
+      --gray: #64748b;
+      --gray-light: #cbd5e1;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, var(--primary), #c4b5fd);
+      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #a78bfa);
+      --gradient-accent: linear-gradient(135deg, var(--accent), #fb923c);
+      --gradient-card: linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+      --shadow-primary: 0 10px 15px -3px rgba(139, 92, 246, 0.4), 0 4px 6px -2px rgba(139, 92, 246, 0.3);
+      --shadow-accent: 0 10px 15px -3px rgba(249, 115, 22, 0.4), 0 4px 6px -2px rgba(249, 115, 22, 0.3);
+    }
+    [data-theme="dark"].theme-purple {
+      --bg-primary: #0f0a1f;
+      --bg-secondary: #1e1b3b;
+      --bg-tertiary: #2e2a4a;
+      --text-primary: #f5f3ff;
+      --text-secondary: #ddd6fe;
+      --text-tertiary: #c4b5fd;
+      --border-color: rgba(196, 181, 253, 0.15);
+      --glass-bg: rgba(30, 27, 59, 0.85);
+      --card-bg: rgba(46, 42, 74, 0.7);
+      --card-hover: rgba(196, 181, 253, 0.1);
+      --hero-overlay: radial-gradient(circle, rgba(15, 10, 31, 0.7) 0%, rgba(15, 10, 31, 0.95) 100%);
+    }
+    [data-theme="light"].theme-purple {
+      --bg-primary: #f5f3ff;
+      --bg-secondary: #ede9fe;
+      --bg-tertiary: #ddd6fe;
+      --text-primary: #1e1b3b;
+      --text-secondary: #5b21b6;
+      --text-tertiary: #6d28d9;
+      --border-color: rgba(109, 40, 217, 0.2);
+      --glass-bg: rgba(237, 233, 254, 0.85);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-hover: rgba(109, 40, 217, 0.08);
+      --hero-overlay: radial-gradient(circle, rgba(245, 243, 255, 0.7) 0%, rgba(245, 243, 255, 0.95) 100%);
+    }
+  `,
+  royal: `
+    :root, :root.theme-royal {
+      --primary: #a855f7;
+      --primary-light: #c084fc;
+      --primary-dark: #9333ea;
+      --primary-extra-light: #f3e8ff;
+      --secondary: #ec4899;
+      --accent: #f97316;
+      --danger: #ef4444;
+      --dark: #030712;
+      --dark-light: #111827;
+      --gray-dark: #1f2937;
+      --gray: #4b5563;
+      --gray-light: #9ca3af;
+      --light: #f3f4f6;
+      --white: #ffffff;
+      --gradient-primary: linear-gradient(135deg, var(--primary), #d946ef);
+      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #c026d3);
+      --gradient-accent: linear-gradient(135deg, var(--accent), #f43f5e);
+      --gradient-card: linear-gradient(180deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+      --shadow-primary: 0 10px 15px -3px rgba(168, 85, 247, 0.5), 0 4px 6px -2px rgba(168, 85, 247, 0.4);
+      --shadow-accent: 0 10px 15px -3px rgba(249, 115, 22, 0.5), 0 4px 6px -2px rgba(249, 115, 22, 0.4);
+    }
+    [data-theme="dark"].theme-royal {
+      --bg-primary: #0a0418;
+      --bg-secondary: #160b2e;
+      --bg-tertiary: #241545;
+      --text-primary: #f5f3ff;
+      --text-secondary: #e9d5ff;
+      --text-tertiary: #d8b4fe;
+      --border-color: rgba(216, 180, 254, 0.15);
+      --glass-bg: rgba(22, 11, 46, 0.85);
+      --card-bg: rgba(36, 21, 69, 0.7);
+      --card-hover: rgba(216, 180, 254, 0.1);
+      --hero-overlay: radial-gradient(circle, rgba(10, 4, 24, 0.7) 0%, rgba(10, 4, 24, 0.95) 100%);
+    }
+    [data-theme="light"].theme-royal {
+      --bg-primary: #faf5ff;
+      --bg-secondary: #f3e8ff;
+      --bg-tertiary: #e9d5ff;
+      --text-primary: #1e0a3a;
+      --text-secondary: #6b21a8;
+      --text-tertiary: #7e22ce;
+      --border-color: rgba(124, 58, 237, 0.2);
+      --glass-bg: rgba(243, 232, 255, 0.85);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-hover: rgba(124, 58, 237, 0.08);
+      --hero-overlay: radial-gradient(circle, rgba(250, 245, 255, 0.7) 0%, rgba(250, 245, 255, 0.95) 100%);
+    }
+  `
+};
+
+const styleElement = document.createElement('style');
+styleElement.textContent = Object.values(themes).join('\n');
+document.head.appendChild(styleElement);
+
+</script>
+
