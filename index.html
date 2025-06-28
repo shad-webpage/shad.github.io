@@ -14,7 +14,8 @@
             src: url('Vazirmatn-Bold.woff2') format('woff2');
             font-weight: 900;
             font-style: normal;
-            font-display: swap;
+            font-display: swap;/* استایل‌های اسکرول برای تم روشن */
+
         }
         
         @font-face {
@@ -35,28 +36,6 @@
 
         /* Variables */
         :root {
-            /* Colors */
-            --primary: #6366f1;
-            --primary-light: #818cf8;
-            --primary-dark: #4f46e5;
-            --primary-extra-light: #e0e7ff;
-            --secondary: #10b981;
-            --accent: #f59e0b;
-            --danger: #ef4444;
-            --dark: #0f172a;
-            --dark-light: #1e293b;
-            --gray-dark: #334155;
-            --gray: #64748b;
-            --gray-light: #cbd5e1;
-            --light: #f8fafc;
-            --white: #ffffff;
-            
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
-            --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            --gradient-accent: linear-gradient(135deg, var(--accent), #fbbf24);
-            --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            
             /* Spacing */
             --space-xs: 0.5rem;
             --space-sm: 1rem;
@@ -84,8 +63,6 @@
             --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            --shadow-primary: 0 10px 15px -3px rgba(99, 102, 241, 0.3), 0 4px 6px -2px rgba(99, 102, 241, 0.2);
-            --shadow-accent: 0 10px 15px -3px rgba(245, 158, 11, 0.3), 0 4px 6px -2px rgba(245, 158, 11, 0.2);
             
             /* Border radius */
             --radius-sm: 0.25rem;
@@ -106,33 +83,118 @@
 
         /* Dark mode variables */
         [data-theme="dark"] {
-            --bg-primary: var(--dark);
-            --bg-secondary: var(--dark-light);
-            --bg-tertiary: #1a2238;
-            --text-primary: var(--light);
-            --text-secondary: var(--gray-light);
-            --text-tertiary: var(--gray);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --glass-bg: rgba(30, 41, 59, 0.7);
-            --card-bg: var(--dark-light);
-            --card-hover: rgba(255, 255, 255, 0.05);
-            --hero-overlay: radial-gradient(circle, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%);
+            --primary: #d97706;
+            --primary-light: #f59e0b;
+            --primary-dark: #b45309;
+            --primary-extra-light: #fef3c7;
+            --secondary: #92400e;
+            --accent: #facc15;
+            --danger: #b91c1c;
+            --dark: #1c1917;
+            --dark-light: #292524;
+            --gray-dark: #44403c;
+            --gray: #78716c;
+            --gray-light: #d6d3d1;
+            --light: #f5f5f4;
+            --white: #ffffff;
+
+            --gradient-primary: linear-gradient(135deg, var(--primary), #fcd34d);
+            --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #f59e0b);
+            --gradient-accent: linear-gradient(135deg, var(--accent), #fde047);
+            --gradient-card: linear-gradient(180deg, rgba(217, 119, 6, 0.1) 0%, rgba(146, 64, 14, 0.05) 100%);
+
+            --shadow-primary: 0 10px 15px -3px rgba(217, 119, 6, 0.4), 0 4px 6px -2px rgba(217, 119, 6, 0.3);
+            --shadow-accent: 0 10px 15px -3px rgba(250, 204, 21, 0.4), 0 4px 6px -2px rgba(250, 204, 21, 0.3);
+            --shadow-focus: rgba(255, 255, 255, 0.05);
+
+            --bg-primary: #1c1917;
+            --bg-secondary: #292524;
+            --bg-tertiary: #44403c;
+            --text-primary: #fef3c7;
+            --text-secondary: #fde68a;
+            --text-tertiary: #fcd34d;
+
+            --border-primary: rgba(255, 255, 255, 0.1);
+            --border-color: rgba(252, 211, 77, 0.15);
+
+            --glass-bg: rgba(41, 37, 36, 0.85);
+            --card-bg: rgba(68, 64, 60, 0.7);
+            --card-hover: rgba(253, 230, 138, 0.1);
+            --hero-overlay: radial-gradient(circle, rgba(28, 25, 23, 0.7) 0%, rgba(28, 25, 23, 0.95) 100%);
         }
 
         /* Light mode variables */
         [data-theme="light"] {
-            --bg-primary: var(--light);
-            --bg-secondary: var(--white);
-            --bg-tertiary: #f1f5f9;
-            --text-primary: var(--dark);
-            --text-secondary: var(--gray-dark);
-            --text-tertiary: var(--gray);
-            --border-color: rgba(0, 0, 0, 0.1);
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --card-bg: var(--white);
-            --card-hover: rgba(0, 0, 0, 0.05);
-            --hero-overlay: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%);
+            --primary: #6d28d9;
+            --primary-light: #8b5cf6;
+            --primary-dark: #5b21b6;
+            --primary-extra-light: #ede9fe;
+            --secondary: #06b6d4;
+            --accent: #f97316;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray-dark: #334155;
+            --gray: #64748b;
+            --gray-light: #cbd5e1;
+            --light: #f8fafc;
+            --white: #ffffff;
+
+            --gradient-primary: linear-gradient(135deg, var(--primary), #a78bfa);
+            --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #7c3aed);
+            --gradient-accent: linear-gradient(135deg, var(--accent), #fb923c);
+            --gradient-card: linear-gradient(180deg, rgba(109, 40, 217, 0.15) 0%, rgba(109, 40, 217, 0.05) 100%);
+
+            --shadow-primary: 0 10px 15px -3px rgba(109, 40, 217, 0.4), 0 4px 6px -2px rgba(109, 40, 217, 0.3);
+            --shadow-accent: 0 10px 15px -3px rgba(249, 115, 22, 0.4), 0 4px 6px -2px rgba(249, 115, 22, 0.3);
+            --shadow-focus: rgba(0, 0, 0, 0.05);
+
+            --bg-primary: #f5f3ff;
+            --bg-secondary: #ede9fe;
+            --bg-tertiary: #ddd6fe;
+            --text-primary: #1e1b3a;
+            --text-secondary: #4c1d95;
+            --text-tertiary: #5b21b6;
+
+            --border-primary: rgba(0, 0, 0, 0.1);
+            --border-color: rgba(109, 40, 217, 0.2);
+
+            --glass-bg: rgba(237, 233, 254, 0.85);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-hover: rgba(109, 40, 217, 0.08);
+            --hero-overlay: radial-gradient(circle, rgba(245, 243, 255, 0.7) 0%, rgba(245, 243, 255, 0.95) 100%);
+
+            .scroll-text {
+                color: var(--dark);
+                opacity: 0.8;
+            }
+
+            .scroll-icon {
+                border-color: var(--primary);
+            }
+
+            .scroll-arrow {
+                background: var(--primary);
+            }
+
+            .scroll-prompt:hover .scroll-text {
+                color: var(--primary-dark);
+            }
+
+            .scroll-prompt:hover .scroll-icon {
+                border-color: var(--primary-dark);
+                box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+            }
+
+            .scroll-prompt {
+                transition: all 0.3s ease;
+            }
+
+            .scroll-icon {
+                transition: all 0.3s ease;
+            }
         }
+        
         /* Base styles */
         * {
             margin: 0;
@@ -244,7 +306,7 @@
             font-size: var(--text-base);
             gap: 10px;
         }
-
+unset
         .btn::after {
             content: '';
             position: absolute;
@@ -491,7 +553,12 @@
         }
 
         /* Hero section */
-z
+        .hero-svg {
+            position: absolute;
+            background-size: cover;
+            background-position: center;
+            fill: var(--primary-light);
+        }
 
         .hero::before {
             content: '';
@@ -552,7 +619,7 @@ z
             max-width: 700px;
             margin: 0 auto;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-primary);
             transition: all 0.3s ease;
             margin-bottom: 4rem;
         }
@@ -586,7 +653,7 @@ z
         }
 
         .search-input:focus {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--shadow-focus);
         }
 
         .search-btn {
@@ -639,7 +706,6 @@ z
         }
 
         .courses::before {
-            content: '';
             position: absolute;
             top: 0;
             left: 0;
@@ -674,7 +740,6 @@ z
         }
 
         .course-card:hover {
-            transform: translateY(-10px) scale(1.02);
             box-shadow: var(--shadow-xl);
             background: var(--card-hover);
         }
@@ -900,7 +965,7 @@ z
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(99, 102, 241, 0.1);
+            background-color: var(--bg-secondary);
             border-radius: var(--radius-full);
             transform: scale(0.9);
             transition: var(--transition);
@@ -1661,7 +1726,7 @@ z
         }
         
         .comment-slide {
-                        background-color: var(--card-bg);
+            background-color: var(--card-bg);
             border-radius: var(--radius-xl);
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
@@ -1671,12 +1736,12 @@ z
             transition: all 0.3s ease;
         }
 
-                .comment-slide:hover {
+        .comment-slide:hover {
             box-shadow: var(--shadow-lg);
             background: var(--card-hover);
         }
 
-                .slider-controls {
+        .slider-controls {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1688,20 +1753,75 @@ z
             display: flex;
             gap: 12px;
         }
-                .dot {
+
+        .dot {
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: var(--text-secondary);
+            opacity: 0.5;
             cursor: pointer;
             transition: all 0.3s ease;
         }
         
         .dot.active {
-            background: white;
+            background: var(--primary);
+            opacity: 1;
             transform: scale(1.3);
         }
+
+        .slider-wrapperC {
+            display: flex;
+            transition: transform 0.5s ease;
+            padding: 10px 0;
+        }
+        
+        .comment-slideC {
+            flex: 0 0 48%;
+            margin: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .comment-slideC:hover {
+            box-shadow: var(--shadow-lg);
+            background: var(--card-hover);
+        }
+
+        .slider-controlsC {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+        
+        .paginationC {
+            display: flex;
+            gap: 12px;
+        }
            
+        .dotC {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+            opacity: 0.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dotC.active {
+            background: var(--primary);
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 768px) {
+            .comment-slideC {
+                flex: 0 0 100%;
+            }
+        }
+
         .nav-btn {
             width: 50px;
             height: 50px;
@@ -1954,7 +2074,7 @@ z
 }
 
 .scroll-arrow:nth-child(1) { animation-delay: 0s; top: 10px; }
-.scroll-arrow:nth-child(2) { animation-delay: 0.3s; top: 18px; }
+.scroll-arrow:nth-cunsethild(2) { animation-delay: 0.3s; top: 18px; }
 .scroll-arrow:nth-child(3) { animation-delay: 0.6s; top: 26px; }
 
 @keyframes scrollDown {
@@ -1966,39 +2086,6 @@ z
 @keyframes fadeInOut {
     0%, 100% { opacity: 0.6; }
     50% { opacity: 1; }
-}
-
-
-/* استایل‌های اسکرول برای تم روشن */
-[data-theme="light"] .scroll-text {
-    color: var(--dark); /* استفاده از رنگ تاریک برای متن */
-    opacity: 0.8;
-}
-
-[data-theme="light"] .scroll-icon {
-    border-color: var(--primary); /* استفاده از رنگ اصلی برای حاشیه */
-}
-
-[data-theme="light"] .scroll-arrow {
-    background: var(--primary); /* استفاده از رنگ اصلی برای نقطه‌ها */
-}
-
-[data-theme="light"] .scroll-prompt:hover .scroll-text {
-    color: var(--primary-dark); /* تغییر رنگ هنگام هاور */
-}
-
-[data-theme="light"] .scroll-prompt:hover .scroll-icon {
-    border-color: var(--primary-dark); /* تغییر رنگ حاشیه هنگام هاور */
-    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3); /* سایه بنفش ملایم */
-}
-
-/* انیمیشن‌هایی که برای هر دو تم کار می‌کنند */
-.scroll-prompt {
-    transition: all 0.3s ease;
-}
-
-.scroll-icon {
-    transition: all 0.3s ease;
 }
 
 @keyframes scrollDown {
@@ -2076,58 +2163,61 @@ z
     </header>
 
     <!-- Hero section -->
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <!-- محتوای اصلی وسط -->
-            <div class="hero-main-content">
-                <h1 class="hero-title">زبان دنیاست، با <span class="highlight">زبانو</span> دنیات رو بزرگ کن! <span class="wave">🚀</span></h1>
-                <p class="hero-subtitle">یادگیری ۱۲ زبان زنده دنیا با متدهای آکادمیک و همراهی اساتید حرفه‌ای در هر لحظه</p>
-                
-                <div class="search-container animate__scaleIn">
-                    <form class="search-form">
-                        <input type="text" placeholder="دوست داری چه زبانی رو یاد بگیری؟ (مثل انگلیسی، فرانسه، آلمانی...)" 
-                               class="search-input">
-                        <button type="submit" class="search-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
-                                 stroke-linejoin="round" class="feather feather-search">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                            <span class="search-text">شروع یادگیری</span>
-                        </button>
-                    </form>
+    <svg class="hero-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M44.1,-58.2C57.1,-51.8,67.3,-37.8,73.1,-21.7C78.9,-5.5,80.4,12.8,74.6,27.9C68.8,43.1,55.8,55.2,40.7,63.4C25.6,71.5,8.3,75.8,-8.3,75.6C-25,75.4,-49.9,70.8,-61.6,58.3C-73.3,45.8,-71.7,25.4,-68.2,7.7C-64.7,-10.1,-59.2,-25.2,-51.3,-37.3C-43.4,-49.4,-33.1,-58.5,-20.6,-65.1C-8.1,-71.7,6.6,-75.7,22.5,-73.6C38.3,-71.5,55.2,-63.3,66.1,-50.7C77.1,-38.1,82.1,-21.2,81.3,-5.1C80.5,11.1,73.8,26.3,64.4,38.4C55,50.5,42.8,59.4,29.9,67.9C17,76.3,3.4,84.2,-11.9,83.3C-27.2,82.4,-44.3,72.6,-55.5,59.3C-66.7,46,-71.9,29.1,-73.4,12.3C-74.9,-4.5,-72.6,-21.3,-65.1,-34.8C-57.6,-48.3,-44.8,-58.5,-30.9,-64.2C-17,-69.8,-2,-70.8,12.2,-68.8C26.5,-66.9,52.9,-61.8,66.5,-50.3C80.1,-38.8,80.8,-20.8,81.1,-0.6C81.5,19.6,81.5,39.1,73.2,53.3C64.9,67.4,48.3,76.1,32.7,78.9C17.1,81.7,2.5,78.5,-12.4,74.3C-27.2,70.1,-42.3,64.8,-52.3,54.4C-62.3,44,-67.2,28.5,-69.7,12.6C-72.2,-3.4,-72.3,-20,-65.8,-33.4C-59.3,-46.7,-46.2,-57,-32.6,-64.7C-19,-72.4,-4.8,-77.6,10.9,-75.5C26.6,-73.4,53.2,-64,62.3,-49.9C71.4,-35.8,63,-17,62.6,0.5C62.2,18,69.8,36,66.8,51.1C63.8,66.2,50.2,78.5,35.3,83.6C20.4,88.7,4.2,86.5,-12.6,81.5C-29.4,76.5,-46.9,68.7,-57.2,55.9C-67.5,43,-70.7,25.1,-71.7,7.2C-72.6,-10.7,-71.4,-28.5,-63.5,-42.2C-55.7,-55.8,-41.3,-65.2,-27.5,-71.6C-13.7,-78,-0.5,-81.3,14.7,-77.9C29.9,-74.4,59.7,-64.2,71.1,-48.9C82.5,-33.7,75.5,-13.4,73.5,5.5C71.5,24.4,74.5,48.8,67.7,65.5C60.9,82.1,44.3,91.1,28.4,89.8C12.5,88.6,-2.8,77.1,-18.8,69.2C-34.7,61.3,-51.2,57,-62.9,47.5C-74.6,38,-81.5,23.4,-82.3,8.3C-83.1,-6.8,-77.8,-22.3,-68.7,-34.1C-59.6,-45.9,-46.6,-54,-33.4,-60.7C-20.1,-67.4,-6.7,-72.7,7.6,-73.6C21.9,-74.5,43.8,-71,55.3,-60.6C66.8,-50.2,67.9,-32.9,71.2,-16.9C74.5,-0.9,80,13.7,78.9,27.9C77.8,42.1,70,55.8,58.2,64.3C46.4,72.8,30.6,76.1,15.9,75.6C1.2,75.1,-12.4,70.8,-23.4,64.2C-34.4,57.6,-43.7,48.7,-52.1,38.7C-60.5,28.8,-67.9,17.8,-71.2,5.2C-74.5,-7.3,-73.7,-21.4,-67.2,-32.8C-60.7,-44.1,-48.5,-52.7,-35.7,-59.7C-22.9,-66.7,-9.6,-72.1,4.3,-72.7C18.1,-73.4,36.3,-69.3,44.1,-58.2Z"/></svg>
+
+    <section class="hero">
+
+        <div class="container">
+            <div class="hero-content">
+                <!-- محتوای اصلی وسط -->
+                <div class="hero-main-content">
+                    <h1 class="hero-title">زبان دنیاست، با <span class="highlight">زبانو</span> دنیات رو بزرگ کن! <span class="wave">🚀</span></h1>
+                    <p class="hero-subtitle">یادگیری ۱۲ زبان زنده دنیا با متدهای آکادمیک و همراهی اساتید حرفه‌ای در هر لحظه</p>
+                    
+                    <div class="search-container animate__scaleIn">
+                        <form class="search-form">
+                            <input type="text" placeholder="دوست داری چه زبانی رو یاد بگیری؟ (مثل انگلیسی، فرانسه، آلمانی...)" 
+                                class="search-input">
+                            <button type="submit" class="search-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+                                    stroke-linejoin="round" class="feather feather-search">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                                <span class="search-text">شروع یادگیری</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- اسکرول پایین -->
-            <div class="hero-cta">
-                <div class="scroll-prompt">
-                    <span class="scroll-text">با ما همراه شو</span>
-                    <div class="scroll-icon">
-                        <div class="scroll-arrow"></div>
-                        <div class="scroll-arrow"></div>
-                        <div class="scroll-arrow"></div>
+                
+                <!-- اسکرول پایین -->
+                <div class="hero-cta">
+                    <div class="scroll-prompt">
+                        <span class="scroll-text">با ما همراه شو</span>
+                        <div class="scroll-icon">
+                            <div class="scroll-arrow"></div>
+                            <div class="scroll-arrow"></div>
+                            <div class="scroll-arrow"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Courses section -->
-    <section class="section courses" id="courses">
+    <section class="section courses" id="courses" dir="ltr">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">دوره‌های آموزشی ما</h2>
                 <p class="section-subtitle">برترین دوره‌ها با جدیدترین متدهای آموزشی روز دنیا</p>
             </div>
             
-            <div class="swiper courses-slider">
-                <div class="swiper-wrapper courses-grid">
+            <div class="swiper comments-sliderC">
+                <div class=" slider-wrapperC">
                     <!-- Course 1 -->
-                    <div class="swiper-slide">
+                    <div class="comment-slideC">
                         <div class="course-card">
                             <div class="course-badge">پرفروش</div>
                             <div class="course-image-container">
@@ -2181,7 +2271,7 @@ z
                     </div>
                     
                     <!-- Course 2 -->
-                    <div class="swiper-slide">
+                    <div class="comment-slideC">
                         <div class="course-card">
                             <div class="course-badge accent">جدید</div>
                             <div class="course-image-container">
@@ -2235,7 +2325,7 @@ z
                     </div>
                     
                     <!-- Course 3 -->
-                    <div class="swiper-slide">
+                    <div class="comment-slideC">
                         <div class="course-card">
                             <div class="course-badge">پرطرفدار</div>
                             <div class="course-image-container">
@@ -2289,7 +2379,7 @@ z
                     </div>
                     
                     <!-- Course 4 -->
-                    <div class="swiper-slide">
+                    <div class="comment-slideC">
                         <div class="course-card">
                             <div class="course-badge accent">جدید</div>
                             <div class="course-image-container">
@@ -2343,7 +2433,16 @@ z
                         </div>
                     </div>
                 </div>
-                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="slider-controlsC">
+                <div class="nav-btn prevC">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="paginationC"></div>
+                <div class="nav-btn nextC">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
             </div>
             
             <div class="view-all text-center">
@@ -2733,27 +2832,132 @@ z
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
-        // Initialize Swiper for courses slider
-        const coursesSwiper = new Swiper('.courses-slider', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            pagination: {
-                el: '.courses-slider .swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                576: {
-                    slidesPerView: 1,
-                },
-                768: {
-                    slidesPerView: 2,
-                },
-                992: {
-                    slidesPerView: 3,
-                },
+        const sliderWrapperC = document.querySelector('.slider-wrapperC');
+        const slidesC = document.querySelectorAll('.comment-slideC');
+        const paginationC = document.querySelector('.paginationC');
+        const prevBtnC = document.querySelector('.prevC');
+        const nextBtnC = document.querySelector('.nextC');
+        
+        let slideIndexC = 0;
+        let autoPlayIntervalC;
+        let isDraggingC = false;
+        let startPosC = 0;
+        let currentTranslateC = 0;
+        let prevTranslateC = 0;
+        let animationIDC;
+        
+        // Create pagination dots
+        slidesC.forEach((_, index) => {
+            const dotC = document.createElement('div');
+            dotC.classList.add('dotC');
+            if (index === slideIndexC) dotC.classList.add('active');
+            dotC.addEventListener('click', () => goToSlideC(index));
+            paginationC.appendChild(dotC);
+        });
+        
+        const dotsC = document.querySelectorAll('.dotC');
+        
+        // Update slider position
+        function updateSliderPositionC() {
+            const slidesPerView = getSlidesPerView();
+            const slideWidth = window.innerWidth < 768 ? sliderWrapperC.clientWidth / slidesPerView * 1.5 : sliderWrapperC.clientWidth / slidesPerView * 1.4;
+            sliderWrapperC.style.transform = `translateX(-${slideIndexC * slideWidth + 15}px)`;
+            
+            // Update active dot
+            dotsC.forEach(dot => dot.classList.remove('active'));
+            dotsC[slideIndexC].classList.add('active');
+        }
+        
+        // Go to specific slide
+        function goToSlideC(index) {
+            slideIndexC = index;
+            if (slideIndexC < 0) slideIndexC = slidesC.length - 1;
+            if (slideIndexC >= slidesC.length) slideIndexC = 0;
+            updateSliderPositionC();
+        }
+        
+        // Next slide
+        function nextSlideC() {
+            slideIndexC++;
+            if (slideIndexC >= slidesC.length) slideIndexC = 0;
+            updateSliderPositionC();
+        }
+        
+        // Previous slide
+        function prevSlideC() {
+            slideIndexC--;
+            if (slideIndexC < 0) slideIndexC = slidesC.length - 1;
+            updateSliderPositionC();
+        }
+        
+        // Touch and mouse events for dragging
+        slidesC.forEach(slide => {
+            // Touch events
+            slide.addEventListener('touchstart', touchStartC);
+            slide.addEventListener('touchend', touchEndC);
+            slide.addEventListener('touchmove', touchMoveC);
+            
+            // Mouse events
+            slide.addEventListener('mousedown', touchStartC);
+            slide.addEventListener('mouseup', touchEndC);
+            slide.addEventListener('mouseleave', touchEndC);
+            slide.addEventListener('mousemove', touchMoveC);
+        });
+        
+        function touchStartC(event) {
+            event.preventDefault();
+            isDraggingC = true;
+            startPosC = getPositionX(event);
+            
+            animationIDC = requestAnimationFrame(animationC);
+            sliderWrapperC.style.transition = 'none';
+        }
+        
+        function touchEndC() {
+            isDraggingC = false;
+            cancelAnimationFrame(animationIDC);
+            
+            const slidesPerView = getSlidesPerView();
+            const movedBy = currentTranslateC - prevTranslateC;
+            
+            if (movedBy < -100) nextSlideC();
+            if (movedBy > 100) prevSlideC();
+            
+            sliderWrapperC.style.transition = 'transform 0.5s ease';
+            currentTranslateC = 0;
+            prevTranslateC = 0;
+            setSliderPosition();
+        }
+        
+        function touchMoveC(event) {
+            if (isDragging) {
+                const currentPosition = getPositionX(event);
+                currentTranslateC = currentPosition - startPosC;
             }
+        }
+
+        function animationC() {
+            setSliderPosition();
+            if (isDraggingC) requestAnimationFrame(animation);
+        }
+        
+        function setSliderPositionC() {
+            const slidesPerView = getSlidesPerView();
+            const slideWidth = sliderWrapperC.clientWidth / slidesPerView;
+            sliderWrapperC.style.transform = `translateX(calc(-${slideIndexC * slideWidth + 15}px + ${currentTranslateC}px))`;
+        }
+        
+        // Event listeners
+        prevBtnC.addEventListener('click', prevSlideC);
+        nextBtnC.addEventListener('click', nextSlideC);
+        
+        // Initialize
+        updateSliderPositionC();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            updateSliderPositionC();
         });
 
         const sliderWrapper = document.querySelector('.slider-wrapper');
@@ -2871,6 +3075,17 @@ z
             return event.type.includes('mouse') ? 
                 event.pageX : 
                 event.touches[0].clientX;
+        }
+
+        function animation() {
+            setSliderPosition();
+            if (isDragging) requestAnimationFrame(animation);
+        }
+        
+        function setSliderPosition() {
+            const slidesPerView = getSlidesPerView();
+            const slideWidth = sliderWrapper.clientWidth / slidesPerView;
+            sliderWrapper.style.transform = `translateX(calc(-${slideIndex * slideWidth + 15}px + ${currentTranslate}px))`;
         }
         
         // Event listeners
@@ -3019,527 +3234,3 @@ document.querySelector('.scroll-prompt').addEventListener('click', function(e) {
     </script>
 </body>
 </html>
-
-<!-- در بخش <head> -->
-<style>
-  :root {
-    /* متغیرهای پایه که در همه تم‌ها مشترک هستند */
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 1.5rem;
-    --space-lg: 2rem;
-    --space-xl: 3rem;
-    --text-xs: 0.75rem;
-    --text-sm: 0.875rem;
-    --text-base: 1rem;
-    --text-lg: 1.125rem;
-    --text-xl: 1.25rem;
-    --radius-sm: 0.25rem;
-    --radius: 0.5rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 1rem;
-    --transition: all 0.3s ease;
-    --header-height: 80px;
-  }
-
-  /* استایل پنل انتخاب تم */
-  .theme-switcheri {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1000;
-  }
-  
-  .theme-toggle-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--gradient-primary);
-    color: white;
-    border: none;
-    box-shadow: var(--shadow-lg);
-    cursor: pointer;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-  }
-  
-  .theme-panel {
-    position: absolute;
-    bottom: 70px;
-    right: 0;
-    width: 280px;
-    background: var(--card-bg);
-    border-radius: var(--radius-lg);
-    padding: var(--space-md);
-    box-shadow: var(--shadow-xl);
-    transform: scale(0);
-    transform-origin: bottom right;
-    transition: var(--transition);
-    border: 1px solid var(--border-color);
-  }
-  
-  .theme-panel.show {
-    transform: scale(1);
-  }
-  
-  .theme-panel h3 {
-    margin-top: 0;
-    margin-bottom: var(--space-md);
-    color: var(--text-primary);
-  }
-  
-  .theme-options {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-sm);
-  }
-  
-  .theme-option {
-    width: 100%;
-    aspect-ratio: 1;
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: var(--transition);
-    border: 2px solid transparent;
-  }
-  
-  .theme-option:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-md);
-  }
-  
-  .theme-option.active {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--primary-extra-light);
-  }
-
-  .theme-primery {
-    background: linear-gradient(135deg, #6366f1, #818cf8);
-  }
-  
-  /* رنگ‌بندی تم‌ها */
-  .theme-luxury {
-    background: linear-gradient(135deg, #d97706, #92400e);
-  }
-  
-  .theme-ocean {
-    background: linear-gradient(135deg, #2563eb, #06b6d4);
-  }
-  
-  .theme-neon {
-    background: linear-gradient(135deg, #6d28d9, #06b6d4);
-  }
-  
-  .theme-purple {
-    background: linear-gradient(135deg, #8b5cf6, #c4b5fd);
-  }
-  
-  .theme-royal {
-    background: linear-gradient(135deg, #a855f7, #ec4899);
-  }
-</style>
-
-<!-- در بخش <body> -->
-<div class="theme-switcheri">
-  <button class="theme-toggle-btn">🎨</button>
-  <div class="theme-panel">
-    <h3>انتخاب تم</h3>
-    <div class="theme-options">
-      <div class="theme-option theme-primery" data-theme="primery"></div>
-      <div class="theme-option theme-luxury" data-theme="luxury"></div>
-      <div class="theme-option theme-ocean" data-theme="ocean"></div>
-      <div class="theme-option theme-neon" data-theme="neon"></div>
-      <div class="theme-option theme-purple" data-theme="purple"></div>
-      <div class="theme-option theme-royal" data-theme="royal"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const toggleBtn = document.querySelector('.theme-toggle-btn');
-  const themePanel = document.querySelector('.theme-panel');
-  const themeOptions = document.querySelectorAll('.theme-option');
-  
-  // توابع تغییر تم
-  function setTheme(themeName) {
-
-    // حذف تمام کلاس‌های تم
-    document.documentElement.className = '';
-    
-    // اضافه کردن تم انتخاب شده
-    document.documentElement.classList.add(`theme-${themeName}`);
-    
-    // ذخیره در localStorage
-    localStorage.setItem('selectedTheme', themeName);
-    
-    // آپدیت دکمه
-    updateToggleButton(themeName);
-  }
-  
-  function updateToggleButton(themeName) {
-    const colors = {
-      'primery': 'linear-gradient(135deg, #6366f1, #818cf8)',
-      'luxury': 'linear-gradient(135deg, #d97706, #92400e)',
-      'ocean': 'linear-gradient(135deg, #2563eb, #06b6d4)',
-      'neon': 'linear-gradient(135deg, #6d28d9, #06b6d4)',
-      'purple': 'linear-gradient(135deg, #8b5cf6, #c4b5fd)',
-      'royal': 'linear-gradient(135deg, #a855f7, #ec4899)'
-    };
-    toggleBtn.style.background = colors[themeName];
-  }
-  
-  // رویدادهای کلیک
-  toggleBtn.addEventListener('click', () => {
-    themePanel.classList.toggle('show');
-  });
-  
-  themeOptions.forEach(option => {
-    option.addEventListener('click', function() {
-      const themeName = this.dataset.theme;
-      setTheme(themeName);
-      
-      // علامت‌گذاری تم فعال
-      themeOptions.forEach(opt => opt.classList.remove('active'));
-      this.classList.add('active');
-      
-      // بستن پنل
-      themePanel.classList.remove('show');
-    });
-  });
-  
-  // بارگذاری تم ذخیره شده
-  const savedTheme = localStorage.getItem('selectedTheme') || 'luxury';
-  setTheme(savedTheme);
-  
-  // علامت‌گذاری تم فعال
-  document.querySelector(`.theme-option[data-theme="${savedTheme}"]`).classList.add('active');
-});
-
-// تعریف تم‌ها در CSS
-const themes = {
-    primery: `
-    :root, :root.theme-primery {
-        --primary: #6366f1;
-        --primary-light: #818cf8;
-        --primary-dark: #4f46e5;
-        --primary-extra-light: #e0e7ff;
-        --secondary: #10b981;
-        --accent: #f59e0b;
-        --danger: #ef4444;
-        --dark: #0f172a;
-        --dark-light: #1e293b;
-        --gray-dark: #334155;
-        --gray: #64748b;
-        --gray-light: #cbd5e1;
-        --light: #f8fafc;
-        --white: #ffffff;
-        --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
-        --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), var(--primary));
-        --gradient-accent: linear-gradient(135deg, var(--accent), #fbbf24);
-        --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-        --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        --shadow-primary: 0 10px 15px -3px rgba(99, 102, 241, 0.3), 0 4px 6px -2px rgba(99, 102, 241, 0.2);
-        --shadow-accent: 0 10px 15px -3px rgba(245, 158, 11, 0.3), 0 4px 6px -2px rgba(245, 158, 11, 0.2);
-        --radius-sm: 0.25rem;
-        --radius: 0.5rem;
-        --radius-md: 0.75rem;
-        --radius-lg: 1rem;
-        --radius-xl: 1.5rem;
-        --radius-full: 9999px;
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-bounce: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-        --header-height: 80px;
-    }
-    [data-theme="dark"].theme-primery {
-        --bg-primary: var(--dark);
-        --bg-secondary: var(--dark-light);
-        --bg-tertiary: #1a2238;
-        --text-primary: var(--light);
-        --text-secondary: var(--gray-light);
-        --text-tertiary: var(--gray);
-        --border-color: rgba(255, 255, 255, 0.1);
-        --glass-bg: rgba(30, 41, 59, 0.7);
-        --card-bg: var(--dark-light);
-        --card-hover: rgba(255, 255, 255, 0.05);
-        --hero-overlay: radial-gradient(circle, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%);
-    }
-    [data-theme="light"].theme-primery {
-        --bg-primary: var(--light);
-        --bg-secondary: var(--white);
-        --bg-tertiary: #f1f5f9;
-        --text-primary: var(--dark);
-        --text-secondary: var(--gray-dark);
-        --text-tertiary: var(--gray);
-        --border-color: rgba(0, 0, 0, 0.1);
-        --glass-bg: rgba(255, 255, 255, 0.7);
-        --card-bg: var(--white);
-        --card-hover: rgba(0, 0, 0, 0.05);
-        --hero-overlay: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.9) 100%);
-    }`,
-  luxury: `
-    :root, :root.theme-luxury {
-      --primary: #d97706;
-      --primary-light: #f59e0b;
-      --primary-dark: #b45309;
-      --primary-extra-light: #fef3c7;
-      --secondary: #92400e;
-      --accent: #facc15;
-      --danger: #b91c1c;
-      --dark: #1c1917;
-      --dark-light: #292524;
-      --gray-dark: #44403c;
-      --gray: #78716c;
-      --gray-light: #d6d3d1;
-      --light: #f5f5f4;
-      --white: #ffffff;
-      --gradient-primary: linear-gradient(135deg, var(--primary), #fcd34d);
-      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #f59e0b);
-      --gradient-accent: linear-gradient(135deg, var(--accent), #fde047);
-      --gradient-card: linear-gradient(180deg, rgba(217, 119, 6, 0.1) 0%, rgba(146, 64, 14, 0.05) 100%);
-      --shadow-primary: 0 10px 15px -3px rgba(217, 119, 6, 0.4), 0 4px 6px -2px rgba(217, 119, 6, 0.3);
-      --shadow-accent: 0 10px 15px -3px rgba(250, 204, 21, 0.4), 0 4px 6px -2px rgba(250, 204, 21, 0.3);
-    }
-    [data-theme="dark"].theme-luxury {
-      --bg-primary: #1c1917;
-      --bg-secondary: #292524;
-      --bg-tertiary: #44403c;
-      --text-primary: #fef3c7;
-      --text-secondary: #fde68a;
-      --text-tertiary: #fcd34d;
-      --border-color: rgba(252, 211, 77, 0.15);
-      --glass-bg: rgba(41, 37, 36, 0.85);
-      --card-bg: rgba(68, 64, 60, 0.7);
-      --card-hover: rgba(253, 230, 138, 0.1);
-      --hero-overlay: radial-gradient(circle, rgba(28, 25, 23, 0.7) 0%, rgba(28, 25, 23, 0.95) 100%);
-    }
-    [data-theme="light"].theme-luxury {
-      --bg-primary: #f5f5f4;
-      --bg-secondary: #e7e5e4;
-      --bg-tertiary: #d6d3d1;
-      --text-primary: #1c1917;
-      --text-secondary: #44403c;
-      --text-tertiary: #78716c;
-      --border-color: rgba(28, 25, 23, 0.1);
-      --glass-bg: rgba(231, 229, 228, 0.85);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --card-hover: rgba(28, 25, 23, 0.05);
-      --hero-overlay: radial-gradient(circle, rgba(245, 245, 244, 0.7) 0%, rgba(245, 245, 244, 0.95) 100%);
-    }
-  `,
-  ocean: `
-    :root, :root.theme-ocean {
-      --primary: #2563eb;
-      --primary-light: #3b82f6;
-      --primary-dark: #1d4ed8;
-      --primary-extra-light: #dbeafe;
-      --secondary: #06b6d4;
-      --accent: #f59e0b;
-      --danger: #ef4444;
-      --dark: #0f172a;
-      --dark-light: #1e293b;
-      --gray-dark: #334155;
-      --gray: #64748b;
-      --gray-light: #cbd5e1;
-      --light: #f8fafc;
-      --white: #ffffff;
-      --gradient-primary: linear-gradient(135deg, var(--primary), #60a5fa);
-      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #3b82f6);
-      --gradient-accent: linear-gradient(135deg, var(--accent), #fbbf24);
-      --gradient-card: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
-      --shadow-primary: 0 10px 15px -3px rgba(37, 99, 235, 0.4), 0 4px 6px -2px rgba(37, 99, 235, 0.3);
-      --shadow-accent: 0 10px 15px -3px rgba(245, 158, 11, 0.4), 0 4px 6px -2px rgba(245, 158, 11, 0.3);
-    }
-    [data-theme="dark"].theme-ocean {
-      --bg-primary: #020617;
-      --bg-secondary: #0f172a;
-      --bg-tertiary: #1e293b;
-      --text-primary: #e0f2fe;
-      --text-secondary: #bae6fd;
-      --text-tertiary: #7dd3fc;
-      --border-color: rgba(125, 211, 252, 0.15);
-      --glass-bg: rgba(15, 23, 42, 0.85);
-      --card-bg: rgba(30, 41, 59, 0.7);
-      --card-hover: rgba(186, 230, 253, 0.1);
-      --hero-overlay: radial-gradient(circle, rgba(2, 6, 23, 0.7) 0%, rgba(2, 6, 23, 0.95) 100%);
-    }
-    [data-theme="light"].theme-ocean {
-      --bg-primary: #f0f9ff;
-      --bg-secondary: #e0f2fe;
-      --bg-tertiary: #bae6fd;
-      --text-primary: #082f49;
-      --text-secondary: #075985;
-      --text-tertiary: #0c4a6e;
-      --border-color: rgba(8, 47, 73, 0.1);
-      --glass-bg: rgba(224, 242, 254, 0.85);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --card-hover: rgba(8, 47, 73, 0.05);
-      --hero-overlay: radial-gradient(circle, rgba(240, 249, 255, 0.7) 0%, rgba(240, 249, 255, 0.95) 100%);
-    }
-  `,
-  neon: `
-    :root, :root.theme-neon {
-      --primary: #6d28d9;
-      --primary-light: #8b5cf6;
-      --primary-dark: #5b21b6;
-      --primary-extra-light: #ede9fe;
-      --secondary: #06b6d4;
-      --accent: #f97316;
-      --danger: #ef4444;
-      --dark: #0f172a;
-      --dark-light: #1e293b;
-      --gray-dark: #334155;
-      --gray: #64748b;
-      --gray-light: #cbd5e1;
-      --light: #f8fafc;
-      --white: #ffffff;
-      --gradient-primary: linear-gradient(135deg, var(--primary), #a78bfa);
-      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #7c3aed);
-      --gradient-accent: linear-gradient(135deg, var(--accent), #fb923c);
-      --gradient-card: linear-gradient(180deg, rgba(109, 40, 217, 0.15) 0%, rgba(109, 40, 217, 0.05) 100%);
-      --shadow-primary: 0 10px 15px -3px rgba(109, 40, 217, 0.4), 0 4px 6px -2px rgba(109, 40, 217, 0.3);
-      --shadow-accent: 0 10px 15px -3px rgba(249, 115, 22, 0.4), 0 4px 6px -2px rgba(249, 115, 22, 0.3);
-    }
-    [data-theme="dark"].theme-neon {
-      --bg-primary: #0b0a1a;
-      --bg-secondary: #1e1b3a;
-      --bg-tertiary: #2a2750;
-      --text-primary: #f5f3ff;
-      --text-secondary: #c7d2fe;
-      --text-tertiary: #a5b4fc;
-      --border-color: rgba(165, 180, 252, 0.15);
-      --glass-bg: rgba(30, 27, 58, 0.85);
-      --card-bg: rgba(30, 27, 58, 0.7);
-      --card-hover: rgba(165, 180, 252, 0.1);
-      --hero-overlay: radial-gradient(circle, rgba(11, 10, 26, 0.7) 0%, rgba(11, 10, 26, 0.95) 100%);
-    }
-    [data-theme="light"].theme-neon {
-      --bg-primary: #f5f3ff;
-      --bg-secondary: #ede9fe;
-      --bg-tertiary: #ddd6fe;
-      --text-primary: #1e1b3a;
-      --text-secondary: #4c1d95;
-      --text-tertiary: #5b21b6;
-      --border-color: rgba(109, 40, 217, 0.2);
-      --glass-bg: rgba(237, 233, 254, 0.85);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --card-hover: rgba(109, 40, 217, 0.08);
-      --hero-overlay: radial-gradient(circle, rgba(245, 243, 255, 0.7) 0%, rgba(245, 243, 255, 0.95) 100%);
-    }
-  `,
-  purple: `
-    :root, :root.theme-purple {
-      --primary: #8b5cf6;
-      --primary-light: #a78bfa;
-      --primary-dark: #7c3aed;
-      --primary-extra-light: #ede9fe;
-      --secondary: #06b6d4;
-      --accent: #f97316;
-      --danger: #f43f5e;
-      --dark: #0f172a;
-      --dark-light: #1e293b;
-      --gray-dark: #334155;
-      --gray: #64748b;
-      --gray-light: #cbd5e1;
-      --light: #f8fafc;
-      --white: #ffffff;
-      --gradient-primary: linear-gradient(135deg, var(--primary), #c4b5fd);
-      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #a78bfa);
-      --gradient-accent: linear-gradient(135deg, var(--accent), #fb923c);
-      --gradient-card: linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
-      --shadow-primary: 0 10px 15px -3px rgba(139, 92, 246, 0.4), 0 4px 6px -2px rgba(139, 92, 246, 0.3);
-      --shadow-accent: 0 10px 15px -3px rgba(249, 115, 22, 0.4), 0 4px 6px -2px rgba(249, 115, 22, 0.3);
-    }
-    [data-theme="dark"].theme-purple {
-      --bg-primary: #0f0a1f;
-      --bg-secondary: #1e1b3b;
-      --bg-tertiary: #2e2a4a;
-      --text-primary: #f5f3ff;
-      --text-secondary: #ddd6fe;
-      --text-tertiary: #c4b5fd;
-      --border-color: rgba(196, 181, 253, 0.15);
-      --glass-bg: rgba(30, 27, 59, 0.85);
-      --card-bg: rgba(46, 42, 74, 0.7);
-      --card-hover: rgba(196, 181, 253, 0.1);
-      --hero-overlay: radial-gradient(circle, rgba(15, 10, 31, 0.7) 0%, rgba(15, 10, 31, 0.95) 100%);
-    }
-    [data-theme="light"].theme-purple {
-      --bg-primary: #f5f3ff;
-      --bg-secondary: #ede9fe;
-      --bg-tertiary: #ddd6fe;
-      --text-primary: #1e1b3b;
-      --text-secondary: #5b21b6;
-      --text-tertiary: #6d28d9;
-      --border-color: rgba(109, 40, 217, 0.2);
-      --glass-bg: rgba(237, 233, 254, 0.85);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --card-hover: rgba(109, 40, 217, 0.08);
-      --hero-overlay: radial-gradient(circle, rgba(245, 243, 255, 0.7) 0%, rgba(245, 243, 255, 0.95) 100%);
-    }
-  `,
-  royal: `
-    :root, :root.theme-royal {
-      --primary: #a855f7;
-      --primary-light: #c084fc;
-      --primary-dark: #9333ea;
-      --primary-extra-light: #f3e8ff;
-      --secondary: #ec4899;
-      --accent: #f97316;
-      --danger: #ef4444;
-      --dark: #030712;
-      --dark-light: #111827;
-      --gray-dark: #1f2937;
-      --gray: #4b5563;
-      --gray-light: #9ca3af;
-      --light: #f3f4f6;
-      --white: #ffffff;
-      --gradient-primary: linear-gradient(135deg, var(--primary), #d946ef);
-      --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), #c026d3);
-      --gradient-accent: linear-gradient(135deg, var(--accent), #f43f5e);
-      --gradient-card: linear-gradient(180deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
-      --shadow-primary: 0 10px 15px -3px rgba(168, 85, 247, 0.5), 0 4px 6px -2px rgba(168, 85, 247, 0.4);
-      --shadow-accent: 0 10px 15px -3px rgba(249, 115, 22, 0.5), 0 4px 6px -2px rgba(249, 115, 22, 0.4);
-    }
-    [data-theme="dark"].theme-royal {
-      --bg-primary: #0a0418;
-      --bg-secondary: #160b2e;
-      --bg-tertiary: #241545;
-      --text-primary: #f5f3ff;
-      --text-secondary: #e9d5ff;
-      --text-tertiary: #d8b4fe;
-      --border-color: rgba(216, 180, 254, 0.15);
-      --glass-bg: rgba(22, 11, 46, 0.85);
-      --card-bg: rgba(36, 21, 69, 0.7);
-      --card-hover: rgba(216, 180, 254, 0.1);
-      --hero-overlay: radial-gradient(circle, rgba(10, 4, 24, 0.7) 0%, rgba(10, 4, 24, 0.95) 100%);
-    }
-    [data-theme="light"].theme-royal {
-      --bg-primary: #faf5ff;
-      --bg-secondary: #f3e8ff;
-      --bg-tertiary: #e9d5ff;
-      --text-primary: #1e0a3a;
-      --text-secondary: #6b21a8;
-      --text-tertiary: #7e22ce;
-      --border-color: rgba(124, 58, 237, 0.2);
-      --glass-bg: rgba(243, 232, 255, 0.85);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --card-hover: rgba(124, 58, 237, 0.08);
-      --hero-overlay: radial-gradient(circle, rgba(250, 245, 255, 0.7) 0%, rgba(250, 245, 255, 0.95) 100%);
-    }
-  `
-};
-
-const styleElement = document.createElement('style');
-styleElement.textContent = Object.values(themes).join('\n');
-document.head.appendChild(styleElement);
-
-</script>
-
