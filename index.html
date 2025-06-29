@@ -1253,7 +1253,7 @@ unset
         .social-link svg {
             width: 24px;
             height: 24px;
-            color: var(--text-secondary);
+            color: var(--white);
             transition: all 0.3s ease;
         }
 
@@ -3469,3 +3469,503 @@ document.querySelector('.scroll-prompt').addEventListener('click', function(e) {
     </script>
 </body>
 </html>
+<!-- دکمه مشاوره شناور پیشرفته -->
+<div class="consultation-container">
+  <div class="consultation-floating-btn" id="consultationBtn">
+    <div class="consultation-icon">
+      <i class="fas fa-headset"></i>
+    </div>
+    <span class="consultation-pulse"></span>
+    <span class="consultation-text">مشاوره رایگان</span>
+    <div class="consultation-tooltip">نیاز به راهنمایی دارید؟ کلیک کنید!</div>
+  </div>
+  
+  <!-- پنجره مشاوره (پنهان) -->
+  <div class="consultation-modal" id="consultationModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>مشاوره تخصصی رایگان</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="consultant-avatar">
+          <img src="https://example.com/consultant.jpg" alt="مشاور">
+          <div class="consultant-status online"></div>
+        </div>
+        <p class="consultant-intro">سلام! من نگار هستم، مشاور تخصصی شما. چطور می‌تونم کمکتون کنم؟</p>
+        
+        <div class="contact-options">
+          <button class="contact-btn whatsapp">
+            <i class="fab fa-whatsapp"></i> گفتگوی واتس‌اپ
+          </button>
+          <button class="contact-btn call">
+            <i class="fas fa-phone"></i> تماس تلفنی
+          </button>
+          <button class="contact-btn chat">
+            <i class="fas fa-comment-dots"></i> چت آنلاین
+          </button>
+        </div>
+        
+        <form class="consultation-form">
+          <div class="form-group">
+            <label for="name">نام شما</label>
+            <input type="text" id="name" placeholder="نام و نام خانوادگی">
+          </div>
+          <div class="form-group">
+            <label for="phone">شماره تماس</label>
+            <input type="tel" id="phone" placeholder="09xxxxxxxxx">
+          </div>
+          <button type="submit" class="submit-btn">درخواست مشاوره</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* استایل‌های پیشرفته برای دکمه مشاوره */
+  .consultation-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+  }
+  
+  .consultation-floating-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    transform: translateY(0);
+    overflow: visible;
+    width: fit-content;
+    border: none;
+    font-family: inherit;
+  }
+  
+  .consultation-floating-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    background: var(--gradient-primary-hover);
+  }
+  
+  .consultation-icon {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    transition: var(--transition);
+    z-index: 2;
+  }
+  
+  .consultation-floating-btn:hover .consultation-icon {
+    transform: rotate(15deg) scale(1.1);
+  }
+  
+  .consultation-text {
+    font-weight: 600;
+    font-size: var(--text-sm);
+    z-index: 2;
+  }
+  
+  /* انیمیشن پالس پیشرفته */
+  .consultation-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 50px;
+    z-index: 1;
+    animation: pulse 2s infinite;
+    opacity: 0.7;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    70% { transform: scale(1.2); opacity: 0; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+  
+  /* تولتیپ */
+  .consultation-tooltip {
+    position: absolute;
+    bottom: 100%;
+    right: 50%;
+    transform: translateX(50%);
+    background: var(--dark-light);
+    color: var(--white);
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    white-space: nowrap;
+    margin-bottom: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .consultation-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--dark-light) transparent transparent transparent;
+  }
+  
+  .consultation-floating-btn:hover .consultation-tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(100% + 5px);
+  }
+  
+  /* مودال مشاوره */
+  .consultation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-slow);
+  }
+  
+  .consultation-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .modal-content {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    width: 90%;
+    max-width: 400px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    transform: translateY(20px);
+    transition: var(--transition-slow);
+  }
+  
+  .consultation-modal.active .modal-content {
+    transform: translateY(0);
+  }
+  
+  .modal-header {
+    padding: var(--space-md);
+    background: var(--gradient-primary);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-header h3 {
+    font-size: var(--text-lg);
+    font-weight: 700;
+  }
+  
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: var(--text-xl);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .modal-close:hover {
+    transform: rotate(90deg);
+  }
+  
+  .modal-body {
+    padding: var(--space-md);
+  }
+  
+  .consultant-avatar {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-md);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-extra-light);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .consultant-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .consultant-status {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+  }
+  
+  .consultant-status.online {
+    background: #10b981;
+  }
+  
+  .consultant-intro {
+    text-align: center;
+    margin-bottom: var(--space-md);
+    color: var(--text-secondary);
+  }
+  
+  .contact-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+  
+  .contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm);
+    border-radius: var(--radius);
+    border: none;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .contact-btn i {
+    margin-left: 8px;
+    font-size: 1.2rem;
+  }
+  
+  .contact-btn.whatsapp {
+    background: #25D366;
+    color: white;
+  }
+  
+  .contact-btn.call {
+    background: var(--primary);
+    color: white;
+  }
+  
+  .contact-btn.chat {
+    background: var(--accent);
+    color: var(--dark);
+  }
+  
+  .contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .consultation-form {
+    margin-top: var(--space-md);
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    transition: var(--transition);
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--shadow-focus);
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: var(--space-sm);
+    background: var(--gradient-primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: var(--space-sm);
+  }
+  
+  .submit-btn:hover {
+    background: var(--gradient-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* واکنش‌گرایی */
+  @media (max-width: 768px) {
+    .consultation-container {
+      bottom: 20px;
+      right: 20px;
+    }
+    
+    .consultation-floating-btn {
+      padding: 12px 20px;
+    }
+    
+    .consultation-text {
+      font-size: var(--text-xs);
+    }
+    
+    .consultation-tooltip {
+      display: none;
+    }
+    
+    .modal-content {
+      width: 95%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .consultation-floating-btn {
+      padding: 15px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    
+    .consultation-text {
+      display: none;
+    }
+    
+    .consultation-icon {
+      margin-left: 0;
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // اسکریپت پیشرفته برای دکمه مشاوره
+  document.addEventListener('DOMContentLoaded', function() {
+    const consultationBtn = document.getElementById('consultationBtn');
+    const consultationModal = document.getElementById('consultationModal');
+    const modalClose = document.querySelector('.modal-close');
+    
+    // باز کردن مودال
+    consultationBtn.addEventListener('click', function() {
+      consultationModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      // ردیابی رویداد در گوگل آنالیتیکس
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'consultation_click', {
+          'event_category': 'engagement',
+          'event_label': 'Floating Button Click'
+        });
+      }
+    });
+    
+    // بستن مودال
+    modalClose.addEventListener('click', function() {
+      closeModal();
+    });
+    
+    // بستن مودال با کلیک خارج از آن
+    consultationModal.addEventListener('click', function(e) {
+      if (e.target === consultationModal) {
+        closeModal();
+      }
+    });
+    
+    // بستن مودال با کلید ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && consultationModal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+    
+    function closeModal() {
+      consultationModal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+    
+    // ارسال فرم
+    const consultationForm = document.querySelector('.consultation-form');
+    if (consultationForm) {
+      consultationForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // جمع‌آوری داده‌های فرم
+        const formData = {
+          name: document.getElementById('name').value,
+          phone: document.getElementById('phone').value
+        };
+        
+        // اینجا می‌توانید داده‌ها را به سرور ارسال کنید
+        console.log('Form submitted:', formData);
+        
+        // نمایش پیام موفقیت
+        alert('درخواست مشاوره شما با موفقیت ثبت شد. به زودی با شما تماس خواهیم گرفت.');
+        
+        // بستن مودال
+        closeModal();
+        
+        // ردیابی رویداد فرم
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'consultation_submit', {
+            'event_category': 'lead',
+            'event_label': 'Consultation Form Submit'
+          });
+        }
+      });
+    }
+    
+    // شبیه‌سازی وضعیت آنلاین/آفلاین مشاور
+    function updateConsultantStatus() {
+      const statusIndicator = document.querySelector('.consultant-status');
+      const isOnline = Math.random() > 0.3; // 70% شانس آنلاین بودن
+      
+      if (isOnline) {
+        statusIndicator.classList.add('online');
+        statusIndicator.classList.remove('offline');
+        document.querySelector('.consultant-intro').textContent = 
+          'سلام! من نگار هستم، مشاور تخصصی شما. چطور می‌تونم کمکتون کنم؟';
+      } else {
+        statusIndicator.classList.add('offline');
+        statusIndicator.classList.remove('online');
+        document.querySelector('.consultant-intro').textContent = 
+          'در حال حاضر آنلاین نیستم. می‌توانید پیام بگذارید یا از طریق واتس‌اپ با من در تماس باشید.';
+      }
+    }
+    
+    // به‌روزرسانی وضعیت هر 30 ثانیه
+    updateConsultantStatus();
+    setInterval(updateConsultantStatus, 30000);
+  });
+</script>
